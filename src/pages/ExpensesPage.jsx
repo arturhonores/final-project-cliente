@@ -26,21 +26,19 @@ const ExpensesPage = () => {
     }
 
     return (
-        <div>
-            <div className="max-w-7xl px-4 mx-auto">
-                <div className="h-screen flex flex-col justify-center items-center">
-                    <div className="rounded-lg shadow-lg w-full pt-12 mt-14 md:w-1/2">
-                        <h2 className="text-center">Agregar Gasto</h2>
-                        <ExpensesForm loadExpenses={loadExpenses}></ExpensesForm>
-                    </div>
-                    {
-                        !expenses
-                            ?
-                            <p>...cargando</p>
-                            :
-                            <ExpensesList expenses={expenses}></ExpensesList>
-                    }
+        <div className="max-w-7xl px-4 mx-auto">
+            <div className="h-screen flex flex-col justify-center items-center">
+                <div className="rounded-lg shadow-lg w-full pt-12 mt-14 md:w-1/2">
+                    <h2 className="text-center">Agregar Gasto</h2>
+                    <ExpensesForm loadExpenses={loadExpenses}></ExpensesForm>
                 </div>
+                {
+                    !expenses
+                        ?
+                        <p>...cargando</p>
+                        :
+                        <ExpensesList expenses={expenses}></ExpensesList>
+                }
             </div>
         </div>
     )
