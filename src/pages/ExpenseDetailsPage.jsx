@@ -20,7 +20,17 @@ const ExpenseDetailsPage = () => {
             <div className="h-screen flex flex-col justify-center items-center">
                 <div className="rounded-lg shadow-lg w-full pt-12 mt-14 md:w-1/2">
                     <h2 className="text-center">Detalles de Categoría</h2>
-                    <h1>{expense_id}</h1>
+                    {
+                        !expense
+                            ?
+                            <p>...cargando</p>
+                            :
+                            <div>
+                                <h1>{expense_id}</h1>
+                                <h2>{expense.amount}</h2>
+                                <h2>{expense.date}</h2>
+                            </div>
+                    }
                 </div>
             </div>
         </div>

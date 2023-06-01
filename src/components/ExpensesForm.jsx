@@ -36,7 +36,7 @@ const ExpensesForm = ({ loadExpenses }) => {
         <div>
             <form onSubmit={handleSubmit} className="p-12 flex flex-col items-center gap-7">
                 <section className="flex flex-col justify-between items-center w-full gap-y-3 md:flex-row md:gap-y-0">
-                    <select name="category" value={expenseData.category} onChange={handleInputChange}>
+                    <select name="category" value={expenseData.category} onChange={handleInputChange} className="focus:ring-verde-oscuro focus:border-none focus:outline-none">
                         <option value="Comida">Comida</option>
                         <option value="Cuentas y pagos">Cuentas y pagos</option>
                         <option value="Hogar">Hogar</option>
@@ -46,7 +46,7 @@ const ExpensesForm = ({ loadExpenses }) => {
                         <option value="Diversion">Diversion</option>
                         <option value="Otros gastos">Otros gastos</option>
                     </select>
-                    <input type="date" name="date" value={expenseData.date} onChange={handleInputChange}></input>
+                    <input type="date" name="date" value={expenseData.date} onChange={handleInputChange} className="focus:ring-verde-oscuro focus:border-none focus:outline-none"></input>
                 </section>
 
                 <input className="text-center border-0 border-b-2 border-slate-400 placeholder:text-slate-400 focus:border-none focus:outline-none focus:ring-verde-oscuro"
@@ -65,7 +65,7 @@ const ExpensesForm = ({ loadExpenses }) => {
                     value={expenseData.amount}
                     onChange={handleInputChange}
                 />
-                <button type="submit" className="rounded-full bg-verde-claro text-white w-fit px-4 py-1">Agregar Gasto</button>
+                <button type="submit" className="rounded-full bg-verde-claro hover:bg-verde-oscuro text-white w-fit px-4 py-1">Agregar Gasto</button>
             </form>
         </div>
     )
