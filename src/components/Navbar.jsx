@@ -7,7 +7,7 @@ const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
 
     return (
-        <div className='shadow-lg fixed top-0 inset-x-0'>
+        <div className='shadow-lg fixed top-0 inset-x-0 bg-white'>
             <div className='max-w-7xl px-4 mx-auto'>
                 <nav className='flex justify-between items-center h-14'>
                     <Link to={'/'}><h3 className='uppercase text-azul-oscuro font-bold'>Money Minder</h3></Link>

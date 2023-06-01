@@ -1,11 +1,13 @@
 import { useState } from "react"
 import expensesService from "../services/expense.services"
 
-const ExpensesForm = () => {
+const ExpensesForm = ({ loadExpenses }) => {
 
     const [expenseData, setExpenseData] = useState({
         description: '',
-        amount: ''
+        amount: '',
+        category: '',
+        date: ''
     })
 
     const handleInputChange = e => {
@@ -18,20 +20,33 @@ const ExpensesForm = () => {
 
         expensesService
             .saveExpense(expenseData)
-            .then(() => alert("Done"))
+            .then(() => {
+                loadExpenses()
+                setExpenseData({
+                    description: '',
+                    amount: '',
+                    category: '',
+                    date: ''
+                })
+            })
             .catch(err => console.log(err))
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit} className="p-12 flex flex-col items-center gap-7">
-                <section className="flex flex-col justify-between items-center w-full md:flex-row">
-                    <select>
-                        <option value="">opcion 1</option>
-                        <option value="">opcion 2</option>
-                        <option value="">opcion 3</option>
+                <section className="flex flex-col justify-between items-center w-full gap-y-3 md:flex-row md:gap-y-0">
+                    <select name="category" value={expenseData.category} onChange={handleInputChange}>
+                        <option value="Comida">Comida</option>
+                        <option value="Cuentas y pagos">Cuentas y pagos</option>
+                        <option value="Hogar">Hogar</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Ropa">Ropa</option>
+                        <option value="Salud y Belleza">Salud y Belleza</option>
+                        <option value="Diversion">Diversion</option>
+                        <option value="Otros gastos">Otros gastos</option>
                     </select>
-                    <div>Day-picker</div>
+                    <input type="date" name="date" value={expenseData.date} onChange={handleInputChange}></input>
                 </section>
 
                 <input className="text-center border-0 border-b-2 border-slate-400 placeholder:text-slate-400 focus:border-none focus:outline-none focus:ring-verde-oscuro"

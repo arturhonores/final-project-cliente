@@ -25,14 +25,13 @@ const ExpensesPage = () => {
             .catch(err => console.log(err))
     }
 
-
     return (
         <div>
             <div className="max-w-7xl px-4 mx-auto">
                 <div className="h-screen flex flex-col justify-center items-center">
-                    <div className="rounded-lg shadow-md w-full md:w-1/2">
+                    <div className="rounded-lg shadow-lg w-full pt-12 mt-14 md:w-1/2">
                         <h2 className="text-center">Agregar Gasto</h2>
-                        <ExpensesForm></ExpensesForm>
+                        <ExpensesForm loadExpenses={loadExpenses}></ExpensesForm>
                     </div>
                     {
                         !expenses
