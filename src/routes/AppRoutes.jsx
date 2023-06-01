@@ -15,9 +15,6 @@ const AppRoutes = () => {
             <Route path='/gastos' element={<PrivateRoute></PrivateRoute>}>
                 <Route path='' element={<ExpensesPage></ExpensesPage>}></Route>
             </Route>
-
-
-
         </Routes>
     )
 }
