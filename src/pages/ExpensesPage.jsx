@@ -17,7 +17,11 @@ const ExpensesPage = () => {
     const loadExpenses = () => {
         expensesService
             .getExpenses()
-            .then(({ data }) => setExpense(data))
+            .then(({ data }) => {
+                const ownedExpenses = data.filter(elm => user._id === elm.owner)
+                setExpense(ownedExpenses)
+            }
+            )
             .catch(err => console.log(err))
     }
 
