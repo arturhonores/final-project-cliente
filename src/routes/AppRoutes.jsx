@@ -4,19 +4,18 @@ import LoginPage from '../pages/LoginPage'
 import SingupPage from '../pages/SingupPage'
 import ExpensesPage from '../pages/ExpensesPage'
 import PrivateRoute from './PrivateRoute'
-import ExpenseDetailsPage from '../pages/ExpenseDetailsPage'
+import CategoryDetailsPage from '../pages/CategoryDetailsPage'
 
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path='/' element={<HomepagePage></HomepagePage>}></Route>
-            <Route path='/iniciar-sesion' element={<LoginPage></LoginPage>}></Route>
-            <Route path='/registro' element={<SingupPage></SingupPage>}></Route>
-            <Route path='/detalles/:expense_id' element={<ExpenseDetailsPage></ExpenseDetailsPage>}></Route>
-
-            <Route path='/gastos' element={<PrivateRoute></PrivateRoute>}>
-                <Route path='' element={<ExpensesPage></ExpensesPage>}></Route>
-
+            {/* TODO: CERRAR COMPONENTES EN ENTARDA */}
+            <Route path='/' element={<HomepagePage />}></Route>
+            <Route path='/iniciar-sesion' element={<LoginPage />}></Route>
+            <Route path='/registro' element={<SingupPage />}></Route>
+            <Route element={<PrivateRoute />}>
+                <Route path='/categoria/:category' element={<CategoryDetailsPage />}></Route>
+                <Route path='/gastos' element={<ExpensesPage />}></Route>
             </Route>
         </Routes>
     )

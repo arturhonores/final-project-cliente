@@ -6,7 +6,7 @@ const ExpensesForm = ({ loadExpenses }) => {
     const [expenseData, setExpenseData] = useState({
         description: '',
         amount: '',
-        category: '',
+        category: 'Comida',
         date: ''
     })
 
