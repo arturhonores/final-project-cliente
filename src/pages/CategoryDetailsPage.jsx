@@ -30,13 +30,13 @@ const CategoryDetailsPage = () => {
         <div className="max-w-7xl px-4 mx-auto">
             <div className="h-screen flex flex-col justify-center items-center">
                 <div className="rounded-lg shadow-lg w-full pt-12 mt-14 md:w-1/2">
-                    <h2 className="text-center">Detalles de Categoría</h2>
+                    <h2 className="text-center">Gastos de {category}</h2>
                     {!categoryList ? (
                         <p>...cargando</p>
                     ) : (
                         <ul>
                             {categoryList.map((elm) => (
-                                <li key={elm._id}>{elm.category} - {elm.amount}</li>
+                                <li className="flex justify-between px-4" key={elm._id}><p>{elm.description}</p> <p>{elm.amount}</p></li>
                             ))}
                         </ul>
                     )}

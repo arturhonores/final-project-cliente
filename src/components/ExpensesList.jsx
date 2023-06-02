@@ -5,7 +5,7 @@ const ExpensesList = ({ expenses, ownerId }) => {
     const calculateTotal = (category) => {
         const categoryExpenses = expenses.filter((expense) => expense.category === category)
         const total = categoryExpenses.reduce((sum, expense) => sum + expense.amount, 0)
-        return total;
+        return total.toFixed(2);
     }
 
     return (

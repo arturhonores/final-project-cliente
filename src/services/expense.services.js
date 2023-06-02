@@ -25,15 +25,9 @@ class ExpenseService {
         return this.api.get('/getAllExpenses')
     }
 
-    //añadido
     getCategory(category) {
         return this.api.get(`/getCategory/${category}`)
     }
-    //
-
-    // getOneExpense(expense_id) {
-    //     return this.api.get(`/getOneExpense/${expense_id}`)
-    // }
 
     saveExpense(ExpenseData) {
         return this.api.post('/saveExpense', ExpenseData)

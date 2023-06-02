@@ -6,9 +6,23 @@ const ExpensesForm = ({ loadExpenses }) => {
     const [expenseData, setExpenseData] = useState({
         description: '',
         amount: '',
-        category: 'Comida',
-        date: ''
+        category: 'Cuentas y pagos',
+        date: formatDate(new Date())
     })
+
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
 
     const handleInputChange = e => {
         const { name, value } = e.target
@@ -25,8 +39,8 @@ const ExpensesForm = ({ loadExpenses }) => {
                 setExpenseData({
                     description: '',
                     amount: '',
-                    category: '',
-                    date: ''
+                    category: 'Cuentas y pagos',
+                    date: formatDate(new Date())
                 })
             })
             .catch(err => console.log(err))
@@ -59,6 +73,7 @@ const ExpensesForm = ({ loadExpenses }) => {
                 />
                 <input className="text-center border-0 border-b-2 border-slate-400 placeholder:text-slate-400 focus:border-none focus:outline-none focus:ring-verde-oscuro"
                     type="number"
+                    step="0.01"
                     name="amount"
                     id="amount"
                     placeholder="€ 0.0"
