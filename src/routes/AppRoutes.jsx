@@ -5,6 +5,7 @@ import SingupPage from '../pages/SingupPage'
 import ExpensesPage from '../pages/ExpensesPage'
 import PrivateRoute from './PrivateRoute'
 import CategoryDetailsPage from '../pages/CategoryDetailsPage'
+import EditExpense from '../pages/EditExpense'
 
 const AppRoutes = () => {
     return (
@@ -15,6 +16,7 @@ const AppRoutes = () => {
             <Route path='/registro' element={<SingupPage />}></Route>
             <Route element={<PrivateRoute />}>
                 <Route path='/categoria/:category' element={<CategoryDetailsPage />}></Route>
+                <Route path='/editar/:gasto' element={<EditExpense />}></Route>
                 <Route path='/gastos' element={<ExpensesPage />}></Route>
             </Route>
         </Routes>
