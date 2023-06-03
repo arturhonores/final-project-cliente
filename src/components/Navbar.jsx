@@ -18,17 +18,24 @@ const Navbar = () => {
                 <nav className='flex justify-between items-center h-14'>
                     <Link to={'/'}><h3 className='uppercase text-azul-oscuro font-bold'>Money Minder</h3></Link>
                     {
-                        user && <Link to={"/perfil"}>{user.username}</Link>
+                        user
+                            ?
+                            <>
+                                <Link to={"/perfil"}>{user.username}</Link>
+                                <Dropdown
+                                    selected={selected}
+                                    onSelectedChange={setSelected}
+                                    options={options}
+                                    avatar={user.avatar}
+                                />
+                            </>
+                            :
+                            null
 
                     }
-                    {/* <img src={user.avatar} className='w-10 rounded-full' alt="" /> */}
                     <Link onClick={logout}>Cerrar Sesión</Link>
                     <Link to={"/iniciar-sesion"} className='rounded-full bg-verde-claro px-5 font-bold py-1 text-white active:bg-verde-oscuro hover:bg-verde-oscuro'>LOGIN</Link>
-                    <Dropdown
-                        selected={selected}
-                        onSelectedChange={setSelected}
-                        options={options}
-                    />
+
                 </nav>
             </div>
         </div>
