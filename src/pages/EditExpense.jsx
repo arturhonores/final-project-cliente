@@ -6,7 +6,6 @@ import ExpenseFormEdit from "../components/ExpenseFormEdit"
 const EditExpense = () => {
     const { user } = useContext(AuthContext)
     const { gasto } = useParams()
-    // console.log(expenseId)
 
     return (
         <div className="max-w-7xl px-4 mx-auto">

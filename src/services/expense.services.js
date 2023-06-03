@@ -25,6 +25,10 @@ class ExpenseService {
         return this.api.get('/getAllExpenses')
     }
 
+    getExpense(expenseId) {
+        return this.api.get(`/getExpense/${expenseId}`)
+    }
+
     getCategory(category) {
         return this.api.get(`/getCategory/${category}`)
     }
