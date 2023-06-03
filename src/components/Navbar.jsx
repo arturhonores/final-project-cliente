@@ -1,8 +1,14 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../contexts/auth.context'
+import Dropdown from './Dropdown'
 
 const Navbar = () => {
+    //----Dropdown-----
+    const options = ['Red', 'Green', 'Blue'];
+    const [selected, setSelected] = useState(options[0]);
+    //--------------------
+
 
     const { user, logout } = useContext(AuthContext)
 
@@ -17,7 +23,12 @@ const Navbar = () => {
                     }
                     {/* <img src={user.avatar} className='w-10 rounded-full' alt="" /> */}
                     <Link onClick={logout}>Cerrar Sesión</Link>
-                    <Link to={"/iniciar-sesion"} className='rounded-full bg-verde-claro px-5 py-1 text-white hover:bg-verde-oscuro'>LOGIN</Link>
+                    <Link to={"/iniciar-sesion"} className='rounded-full bg-verde-claro px-5 font-bold py-1 text-white active:bg-verde-oscuro hover:bg-verde-oscuro'>LOGIN</Link>
+                    <Dropdown
+                        selected={selected}
+                        onSelectedChange={setSelected}
+                        options={options}
+                    />
                 </nav>
             </div>
         </div>

@@ -13,7 +13,7 @@ const CategoryDetailsPage = () => {
     const [showModal, setShowModal] = useState(false)
     const [selectedExpense, setSelectedExpense] = useState(null);
 
-    useEffect(() => {
+    const loadListExpenses = () => {
         expensesService
             .getCategory(category)
             .then(({ data }) => {
@@ -22,6 +22,10 @@ const CategoryDetailsPage = () => {
             }
             )
             .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        loadListExpenses()
     }, [])
 
 
@@ -41,7 +45,7 @@ const CategoryDetailsPage = () => {
                     )}
                 </div>
             </div>
-            {showModal && <ModalExpense showModal={showModal} setShowModal={setShowModal} expense={selectedExpense} />}
+            {showModal && <ModalExpense showModal={showModal} setShowModal={setShowModal} expense={selectedExpense} loadListExpenses={loadListExpenses} />}
         </div>
     );
 }

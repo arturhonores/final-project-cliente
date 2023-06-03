@@ -79,7 +79,7 @@ const ExpensesForm = ({ loadExpenses }) => {
                 value={expenseData.amount}
                 onChange={handleInputChange}
             />
-            <button type="submit" className="rounded-full bg-verde-oscuro hover:bg-verde-claro text-white w-fit px-4 py-1">Agregar Gasto</button>
+            <button type="submit" className="rounded-full bg-verde-oscuro hover:bg-verde-claro active:bg-verde-claro text-white w-fit px-4 py-1 font-bold">Agregar Gasto</button>
         </form>
     )
 }
