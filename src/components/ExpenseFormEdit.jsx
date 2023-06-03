@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AuthContext } from "../contexts/auth.context"
 import expensesService from '../services/expense.services'
 
@@ -11,10 +12,32 @@ const ExpenseFormEdit = ({ expenseId }) => {
         category: '',
         date: ''
     })
+
+    //Para implementar loader
+    // if (!expenseEdit.description || !expenseEdit.amount || !expenseEdit.category || !expenseEdit.date) {
+    //     return <p>Cargando...</p>;
+    // }
+
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2)
+            month = '0' + month;
+        if (day.length < 2)
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
     useEffect(() => {
         expensesService
             .getExpense(expenseId)
             .then(({ data }) => {
+                console.log(data)
+                data.date = formatDate(data.date);
                 setExpenseEdit(data)
             })
             .catch(err => console.log(err))
@@ -25,8 +48,15 @@ const ExpenseFormEdit = ({ expenseId }) => {
         setExpenseEdit({ ...expenseEdit, [name]: value })
     }
 
+    const navigate = useNavigate()
+
     const handleSubmit = e => {
         e.preventDefault()
+        expensesService.editExpense(expenseId, expenseEdit)
+            .then(() => navigate('/gastos'))
+            .catch(err => {
+                console.error(err);
+            });
     }
 
     return (

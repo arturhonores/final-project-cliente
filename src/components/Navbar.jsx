@@ -4,11 +4,6 @@ import { AuthContext } from '../contexts/auth.context'
 import Dropdown from './Dropdown'
 
 const Navbar = () => {
-    //----Dropdown-----
-    const options = ['Red', 'Green', 'Blue'];
-    const [selected, setSelected] = useState(options[0]);
-    //--------------------
-
 
     const { user, logout } = useContext(AuthContext)
 
@@ -21,21 +16,11 @@ const Navbar = () => {
                         user
                             ?
                             <>
-                                <Link to={"/perfil"}>{user.username}</Link>
-                                <Dropdown
-                                    selected={selected}
-                                    onSelectedChange={setSelected}
-                                    options={options}
-                                    avatar={user.avatar}
-                                />
+                                <Dropdown />
                             </>
                             :
-                            null
-
+                            <Link to={"/iniciar-sesion"} className='rounded-full bg-verde-claro px-5 font-bold py-1 text-white active:bg-verde-oscuro hover:bg-verde-oscuro'>LOGIN</Link>
                     }
-                    <Link onClick={logout}>Cerrar Sesión</Link>
-                    <Link to={"/iniciar-sesion"} className='rounded-full bg-verde-claro px-5 font-bold py-1 text-white active:bg-verde-oscuro hover:bg-verde-oscuro'>LOGIN</Link>
-
                 </nav>
             </div>
         </div>

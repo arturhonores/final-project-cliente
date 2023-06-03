@@ -39,7 +39,7 @@ const CategoryDetailsPage = () => {
                     ) : (
                         <ul>
                             {categoryList.map((elm) => (
-                                <li className="flex justify-between px-4 pt-2 pb-1 shadow-sm" key={elm._id} ><p className="cursor-pointer" onClick={() => { setShowModal(true); setSelectedExpense(elm) }}>{elm.description}</p> <div className="flex items-center gap-x-2"><p>{elm.amount.toFixed(2)}</p><Link to={`/editar/${elm._id}`}><span><BiEditAlt></BiEditAlt></span></Link></div></li>
+                                <li className="flex justify-between px-4 pt-3 pb-2 shadow-sm" key={elm._id} ><p className="cursor-pointer" onClick={() => { setShowModal(true); setSelectedExpense(elm) }}>{elm.description}</p> <div className="flex items-center gap-x-2"><p>{elm.amount.toFixed(2)}</p><Link to={`/editar/${elm._id}`}><span><BiEditAlt></BiEditAlt></span></Link></div></li>
                             ))}
                         </ul>
                     )}

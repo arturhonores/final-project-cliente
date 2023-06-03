@@ -37,6 +37,10 @@ class ExpenseService {
         return this.api.get(`/getCategory/${category}`)
     }
 
+    editExpense(expenseId, expenseEdit) {
+        return this.api.put(`/editExpense/${expenseId}`, expenseEdit)
+    }
+
     saveExpense(ExpenseData) {
         return this.api.post('/saveExpense', ExpenseData)
     }
