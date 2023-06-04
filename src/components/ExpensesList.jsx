@@ -1,4 +1,9 @@
 import { Link } from "react-router-dom"
+import { AiOutlineEuro, AiOutlineShoppingCart } from 'react-icons/ai'
+import { BiHome, BiTaxi } from 'react-icons/bi'
+import { GiClothes } from 'react-icons/gi'
+import { MdOutlineHealthAndSafety, MdOutlineFoodBank } from 'react-icons/md'
+import { GrGamepad } from 'react-icons/gr'
 
 const ExpensesList = ({ expenses }) => {
     // Calcula el total sum de los expenses en una categoria
@@ -8,18 +13,31 @@ const ExpensesList = ({ expenses }) => {
         return total.toFixed(2);
     }
 
+    const categoryIcons = {
+        "Alimentación": <MdOutlineFoodBank />,
+        "Cuentas y pagos": <AiOutlineEuro />,
+        "Hogar": <BiHome />,
+        "Transporte": <BiTaxi />,
+        "Ropa": <GiClothes />,
+        "Salud y Belleza": <MdOutlineHealthAndSafety />,
+        "Diversión": <GrGamepad />,
+        "Otros gastos": <AiOutlineShoppingCart />
+    }
+
     return (
-        <div className="flex flex-col justify-center items-center w-full md:w-1/2">
+        // <div className="flex flex-col justify-center items-center w-full md:w-1/2">
+        <>
             {
                 Array.from(new Set(expenses.map((expense) => expense.category))).map((category) => (
                     <Link to={`/categoria/${category}`} key={category} className="w-full">
-                        <div className="rounded-lg shadow-sm mt-5 px-4 flex justify-between">
-                            <p>{category}</p><p>{calculateTotal(category)}</p>
+                        <div className="rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center">
+                            <p className="flex items-center gap-x-2"><span className="text-xl">{categoryIcons[category]}</span>{category}</p><p>€ {calculateTotal(category)}</p>
                         </div>
                     </Link>
                 ))
             }
-        </div >
+        </>
+        // </div >
     )
 }
 

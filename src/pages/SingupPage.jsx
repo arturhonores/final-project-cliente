@@ -9,7 +9,7 @@ const SingupPage = () => {
                     <img src={loginImage} alt="" width="100%" />
                 </section>
                 <section className='text-center space-y-4 w-full md:w-1/2 md:text-left'>
-                    <p className="text-center text-azul-oscuro font-bold text-lg">Regístrate</p>
+                    <p className="text-center text-azul-oscuro font-bold text-lg uppercase">Regístrate</p>
                     <SingupForm></SingupForm>
                 </section>
             </div>

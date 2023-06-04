@@ -74,7 +74,7 @@ const SingupForm = () => {
                     <input className="w-full border border-gray-400 rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 file:bg-azul-claro file:text-white file:border-0 file:mr-4 file:px-4 file:py-3" type='file' id='avatar' onChange={handleFileUpload} />
                 </div>
             </div>
-            <button className="bg-verde-oscuro w-auto min-w-[20%] rounded-lg mx-auto py-2 px-2 text-white hover:bg-verde-claro" type='submit' disabled={loadingImage}>{loadingImage ? '...Cargando imagen' : 'Enviar'}</button>
+            <button className="bg-verde-oscuro w-auto min-w-[20%] rounded-lg mx-auto py-2 px-2 text-white font-bold hover:bg-verde-claro active:bg-verde-claro" type='submit' disabled={loadingImage}>{loadingImage ? '...Cargando imagen' : 'Enviar'}</button>
         </form>
     )
 }

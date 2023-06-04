@@ -10,7 +10,6 @@ const ModalExpense = ({ showModal, setShowModal, expense, loadListExpenses }) =>
             })
             .catch(err => console.log(err))
     }
-    console.log(expense)
     return (
         <>
             {showModal ? (

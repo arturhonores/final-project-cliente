@@ -26,18 +26,20 @@ const ExpensesPage = () => {
 
     return (
         <div className="max-w-7xl px-4 mx-auto">
-            <div className="h-screen flex flex-col justify-center items-center">
+            <div className="h-screen flex flex-col justify-center items-center md:flex-row md:gap-x-8">
                 <div className="rounded-lg shadow-lg w-full pt-12 mt-16 md:w-1/2">
-                    <h2 className="text-center">Agregar Gasto</h2>
+                    <h2 className="text-center text-azul-claro uppercase font-bold">Agregar Gasto</h2>
                     <ExpensesForm loadExpenses={loadExpenses}></ExpensesForm>
                 </div>
-                {
-                    !expenses
-                        ?
-                        <p>...cargando</p>
-                        :
-                        <ExpensesList expenses={expenses} ownerId={user._id}></ExpensesList>
-                }
+                <div className="flex flex-col justify-center items-center w-full md:w-1/2">
+                    {
+                        !expenses
+                            ?
+                            <p>...cargando</p>
+                            :
+                            <ExpensesList expenses={expenses}></ExpensesList>
+                    }
+                </div>
             </div>
         </div>
     )

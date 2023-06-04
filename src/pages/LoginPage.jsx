@@ -10,7 +10,7 @@ const LoginPage = () => {
                     <img src={loginImage} alt="" width="100%" />
                 </section>
                 <section className='text-center space-y-4 w-3/4 md:w-1/2 md:text-left'>
-                    <h2 className="text-center font-extrabold">Iniciar Sesión</h2>
+                    <h2 className="text-center font-bold uppercase text-azul-oscuro">Iniciar Sesión</h2>
                     <p className="text-center">¿No tienes cuenta?<span className="text-azul-claro underline underline-offset-1 pl-3"><Link to={"/registro"}>Crear Cuenta</Link></span></p>
                     <LoginForm></LoginForm>
                 </section>
