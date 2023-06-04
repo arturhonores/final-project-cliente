@@ -6,6 +6,7 @@ import ExpensesPage from '../pages/ExpensesPage'
 import PrivateRoute from './PrivateRoute'
 import CategoryDetailsPage from '../pages/CategoryDetailsPage'
 import EditExpense from '../pages/EditExpense'
+import GraphicsPage from '../pages/GraphicsPage'
 
 const AppRoutes = () => {
     return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
                 <Route path='/categoria/:category' element={<CategoryDetailsPage />}></Route>
                 <Route path='/editar/:gasto' element={<EditExpense />}></Route>
                 <Route path='/gastos' element={<ExpensesPage />}></Route>
+                <Route path='/graficos' element={<GraphicsPage />}></Route>
             </Route>
             {/* <Route path='*' element={<NotFoundPage />} /> */}
         </Routes>

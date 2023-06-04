@@ -3,9 +3,11 @@ import { AuthContext } from '../contexts/auth.context';
 import { useNavigate } from 'react-router-dom';
 import { BiLogOut } from 'react-icons/bi'
 import { GiPayMoney } from 'react-icons/gi'
+import { VscGraph } from 'react-icons/vsc'
 
 const Dropdown = () => {
     const { user, logout } = useContext(AuthContext)
+    console.log(user)
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
 
@@ -33,6 +35,12 @@ const Dropdown = () => {
                         onClick={() => { setOpen(false); navigate("/gastos") }}
                     >
                         <p className='flex items-center gap-x-2 text-white font-semibold uppercase'><span><GiPayMoney /></span> <span>Gastos</span></p>
+                    </div>
+                    <div
+                        className="text-black py-2 px-4 block cursor-pointer hover:bg-verde-oscuro"
+                        onClick={() => { setOpen(false); navigate("/graficos") }}
+                    >
+                        <p className='flex items-center gap-x-2 text-white font-semibold uppercase'><span><VscGraph /></span> <span>Gráficos</span></p>
                     </div>
                     <div
                         className="text-black py-2 px-4 block cursor-pointer hover:bg-verde-oscuro"

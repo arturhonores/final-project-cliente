@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const ExpensesList = ({ expenses, ownerId }) => {
+const ExpensesList = ({ expenses }) => {
     // Calcula el total sum de los expenses en una categoria
     const calculateTotal = (category) => {
         const categoryExpenses = expenses.filter((expense) => expense.category === category)
