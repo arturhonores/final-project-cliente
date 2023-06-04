@@ -33,13 +33,13 @@ const CategoryDetailsPage = () => {
         <div className="max-w-7xl px-4 mx-auto">
             <div className="h-screen flex flex-col justify-center items-center">
                 <div className="rounded-lg shadow-lg w-full pt-8 mt-14 md:w-1/2">
-                    <h2 className="text-center">Gastos de {category}</h2>
+                    <h2 className="text-center text-azul-oscuro uppercase font-bold">Gastos de {category}</h2>
                     {!categoryList ? (
                         <p>...cargando</p>
                     ) : (
                         <ul>
                             {categoryList.map((elm) => (
-                                <li className="flex justify-between px-4 pt-3 pb-2 shadow-sm" key={elm._id} ><p className="cursor-pointer" onClick={() => { setShowModal(true); setSelectedExpense(elm) }}>{elm.description}</p> <div className="flex items-center gap-x-2"><p>{elm.amount.toFixed(2)}</p><Link to={`/editar/${elm._id}`}><span><BiEditAlt></BiEditAlt></span></Link></div></li>
+                                <li className="flex justify-between px-4 pt-3 pb-2 shadow-sm" key={elm._id} ><p className="cursor-pointer" onClick={() => { setShowModal(true); setSelectedExpense(elm) }}>{elm.description}</p> <div className="flex items-center gap-x-2"><p>€ {elm.amount.toFixed(2)}</p><Link to={`/editar/${elm._id}`}><span><BiEditAlt></BiEditAlt></span></Link></div></li>
                             ))}
                         </ul>
                     )}

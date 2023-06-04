@@ -9,8 +9,8 @@ export default {
       colors: {
         'verde-claro': '#00FFAB',
         'verde-oscuro': '#14C38E',
-        'azul-claro': '#2192FF',
-        'azul-oscuro': '#13005A'
+        'azul-claro': '#00FFAB',
+        'azul-oscuro': '#14C38E'
         // 'azul-oscuro': '#002B5B'
       }
 
