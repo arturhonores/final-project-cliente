@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import HomepagePage from "../pages/HomepagePage"
+import HomePage from "../components/HomePage"
 import LoginPage from '../pages/LoginPage'
 import SingupPage from '../pages/SingupPage'
 import ExpensesPage from '../pages/ExpensesPage'
@@ -13,7 +13,7 @@ const AppRoutes = () => {
     return (
         <Routes>
             {/* TODO: CERRAR COMPONENTES EN ENTARDA */}
-            <Route path='/' element={<HomepagePage />}></Route>
+            <Route path='/' element={<HomePage />}></Route>
             <Route path='/iniciar-sesion' element={<LoginPage />}></Route>
             <Route path='/registro' element={<SingupPage />}></Route>
             <Route element={<PrivateRoute />}>

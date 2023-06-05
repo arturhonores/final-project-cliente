@@ -47,7 +47,7 @@ const LoginForm = () => {
                     <input className="rounded-lg w-full border-gray-400" type='password' id='password' value={password} onChange={handleInputChange} name='password' />
                 </div>
             </div>
-            <button className="bg-verde-oscuro w-1/5 rounded-lg mx-auto py-2 text-white hover:bg-verde-claro font-bold" type='submit'>Enviar</button>
+            <button className="bg-verde-oscuro w-1/5 rounded-full mx-auto py-2 text-white hover:bg-verde-claro font-bold" type='submit'>Enviar</button>
         </form>
     )
 }
