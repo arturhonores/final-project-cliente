@@ -24,8 +24,12 @@ const ExpensesList = ({ expenses }) => {
         "Otros gastos": <AiOutlineShoppingCart />
     }
 
+    const calculateTotalExpenses = () => {
+        const total = expenses.reduce((sum, expense) => sum + expense.amount, 0)
+        return total.toFixed(2);
+    }
+
     return (
-        // <div className="flex flex-col justify-center items-center w-full md:w-1/2">
         <>
             {
                 Array.from(new Set(expenses.map((expense) => expense.category))).map((category) => (
@@ -36,8 +40,10 @@ const ExpensesList = ({ expenses }) => {
                     </Link>
                 ))
             }
+            <div className="rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center w-full text-verde-oscuro font-bold">
+                <p>TOTAL</p><p>€ {calculateTotalExpenses()}</p>
+            </div>
         </>
-        // </div >
     )
 }
 

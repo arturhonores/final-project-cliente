@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute'
 import CategoryDetailsPage from '../pages/CategoryDetailsPage'
 import EditExpense from '../pages/EditExpense'
 import GraphicsPage from '../pages/GraphicsPage'
+import EditPerfilPage from '../pages/EditPerfilPage'
 
 const AppRoutes = () => {
     return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
                 <Route path='/editar/:gasto' element={<EditExpense />}></Route>
                 <Route path='/gastos' element={<ExpensesPage />}></Route>
                 <Route path='/graficos' element={<GraphicsPage />}></Route>
+                <Route path='/editar-perfil' element={<EditPerfilPage />}></Route>
             </Route>
             {/* <Route path='*' element={<NotFoundPage />} /> */}
         </Routes>

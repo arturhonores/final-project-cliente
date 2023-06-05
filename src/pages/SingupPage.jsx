@@ -4,7 +4,7 @@ import SingupForm from "../components/SingupForm"
 const SingupPage = () => {
     return (
         <div className='max-w-7xl px-4 mx-auto'>
-            <div className='h-screen bg-red flex flex-col justify-center items-center gap-8 md:flex-row'>
+            <div className='h-screen flex flex-col justify-center items-center gap-8 md:flex-row'>
                 <section className='hidden md:w-1/2 md:block'>
                     <img src={loginImage} alt="" width="100%" />
                 </section>

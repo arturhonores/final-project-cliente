@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../contexts/auth.context'
 import uploadServices from "../services/upload.services.js"
 import authService from '../services/auth.services'
@@ -11,9 +11,18 @@ const ModalUserEdit = ({ showModal, setShowModal }) => {
     const [updatedUserData, setUpdatedUserData] = useState({
         username: user.username,
         email: user.email,
-        password: user.password,
-        avatar: user.avatar,
+        password: "",
+        avatar: "",
     })
+
+    useEffect(() => {
+        setUpdatedUserData({
+            username: user.username,
+            email: user.email,
+            password: "",
+            avatar: user.avatar
+        })
+    }, [user])
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -48,7 +57,7 @@ const ModalUserEdit = ({ showModal, setShowModal }) => {
             .catch(err => console.log(err))
     }
 
-    const { username, password, email } = updatedUserData
+    // const { username, password, email } = updatedUserData
 
     return (
         <>
@@ -70,15 +79,15 @@ const ModalUserEdit = ({ showModal, setShowModal }) => {
                                 <div className="relative p-6 flex-auto">
                                     <div>
                                         <label className="block text-left text-gray-500 text-sm font-bold mb-2">Username</label>
-                                        <input className="rounded-lg w-full border-gray-400" autoFocus id='username' type='text' value={user.username} onChange={handleInputChange} name='username' />
+                                        <input className="rounded-lg w-full border-gray-400" autoFocus id='username' type='text' value={updatedUserData.username} onChange={handleInputChange} name='username' />
                                     </div>
                                     <div>
                                         <label className="block text-left text-gray-500 text-sm font-bold mb-2">Correo</label>
-                                        <input className="rounded-lg w-full border-gray-400" disabled type='email' id='email' value={user.email} onChange={handleInputChange} name='email' />
+                                        <input className="rounded-lg w-full border-gray-400" disabled type='email' id='email' value={updatedUserData.email} onChange={handleInputChange} name='email' />
                                     </div>
                                     <div>
                                         <label className="block text-left text-gray-500 text-sm font-bold mb-2">Contraseña</label>
-                                        <input className="rounded-lg w-full border-gray-400" id='password' type='password' value={user.password} onChange={handleInputChange} name='password' />
+                                        <input className="rounded-lg w-full border-gray-400" id='password' type='password' value={updatedUserData.password} onChange={handleInputChange} name='password' />
                                     </div>
                                     <div>
                                         <label className="block text-left text-gray-500 text-sm font-bold mb-2">Avatar</label>

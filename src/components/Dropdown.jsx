@@ -4,13 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { BiLogOut, BiEdit } from 'react-icons/bi'
 import { GiPayMoney } from 'react-icons/gi'
 import { VscGraph } from 'react-icons/vsc'
-import ModalUserEdit from './ModalUserEdit';
 
 const Dropdown = () => {
     const { user, logout } = useContext(AuthContext)
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
-    const [showModal, setShowModal] = useState(false)
 
     return (
         <div className="relative inline-block text-left">
@@ -22,7 +20,6 @@ const Dropdown = () => {
                     </svg>
                 </button>
             </div>
-            <ModalUserEdit showModal={showModal} setShowModal={setShowModal} />
             <div className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-verde-claro ring-1 ring-black ring-opacity-5 ${open ? 'block' : 'hidden'}`}>
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     <div
@@ -32,7 +29,7 @@ const Dropdown = () => {
                     </div>
                     <div
                         className="py-2 px-4 block cursor-pointer hover:bg-verde-oscuro"
-                        onClick={() => { setOpen(false); setShowModal(true) }}
+                        onClick={() => { setOpen(false); navigate("/editar-perfil") }}
                     >
                         <p className='flex items-center gap-x-2 text-white font-semibold uppercase'><span><BiEdit /></span> <span>Editar perfil</span></p>
                     </div>

@@ -1,39 +1,6 @@
 import { ResponsivePie } from '@nivo/pie'
 
-const Data = [
-    {
-        "id": "c",
-        "label": "c",
-        "value": 393,
-        "color": "hsl(321, 70%, 50%)"
-    },
-    {
-        "id": "make",
-        "label": "make",
-        "value": 166,
-        "color": "hsl(20, 70%, 50%)"
-    },
-    {
-        "id": "rust",
-        "label": "rust",
-        "value": 394,
-        "color": "hsl(94, 70%, 50%)"
-    },
-    {
-        "id": "erlang",
-        "label": "erlang",
-        "value": 141,
-        "color": "hsl(134, 70%, 50%)"
-    },
-    {
-        "id": "scala",
-        "label": "scala",
-        "value": 367,
-        "color": "hsl(140, 70%, 50%)"
-    }
-]
-
-const PieGraphic = ({ data = Data }) => {
+const PieGraphic = ({ data }) => {
 
     return (
         < ResponsivePie
@@ -44,6 +11,7 @@ const PieGraphic = ({ data = Data }) => {
             padAngle={0.7}
             cornerRadius={3}
             activeOuterRadiusOffset={8}
+            colors={{ scheme: 'greens' }}
             borderWidth={1}
             borderColor={{
                 from: 'color',
@@ -140,32 +108,7 @@ const PieGraphic = ({ data = Data }) => {
                         id: 'lines'
                     }
                 ]}
-            legends={
-                [
-                    // {
-                    //     anchor: 'right',
-                    //     direction: 'column',
-                    //     justify: false,
-                    //     translateX: 0,
-                    //     translateY: 56,
-                    //     itemsSpacing: 0,
-                    //     itemWidth: 100,
-                    //     itemHeight: 18,
-                    //     itemTextColor: '#999',
-                    //     itemDirection: 'left-to-right',
-                    //     itemOpacity: 1,
-                    //     symbolSize: 18,
-                    //     symbolShape: 'circle',
-                    //     effects: [
-                    //         {
-                    //             on: 'hover',
-                    //             style: {
-                    //                 itemTextColor: '#000'
-                    //             }
-                    //         }
-                    //     ]
-                    // }
-                ]}
+            legends={[]}
         />
     );
 }
