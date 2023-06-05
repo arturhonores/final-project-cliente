@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { AuthContext } from '../contexts/auth.context'
 import uploadServices from "../services/upload.services.js"
-import authService from '../services/auth.services'
+// import authService from '../services/auth.services'
 
 const ModalUserEdit = ({ showModal, setShowModal }) => {
     const { user, setUser } = useContext(AuthContext)

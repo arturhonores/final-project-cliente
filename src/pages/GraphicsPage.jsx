@@ -12,26 +12,31 @@ const GraphicsPage = () => {
         loadExpenses()
     }, [])
 
-
     const loadExpenses = () => {
         expensesService
             .getExpenses()
             .then(({ data }) => {
                 const ownedExpenses = data.filter(elm => user._id === elm.owner)
-                // Obteniendo año y mes actual
                 const currentYear = new Date().getFullYear()
-                const currentMonth = new Date().getMonth() + 1; // +1 porque los meses en JavaScript son base 0, pero se guardan como base 1
-                // Filtra los gastos para incluir solamente los del mes actual
+                const currentMonth = new Date().getMonth() + 1; // +1 because months in JavaScript are 0-based, but are stored as 1-based
                 const currentMonthExpenses = ownedExpenses.filter(expense => {
-                    const [expenseYear, expenseMonth] = expense.date.split("-") // divide la fecha en año y mes
-                    return expenseYear == currentYear && expenseMonth == currentMonth // compara con el año y mes actuales
+                    const [expenseYear, expenseMonth] = expense.date.split("-") // divides the date into year and month
+                    return expenseYear == currentYear && expenseMonth == currentMonth // compares with the current year and month
                 })
 
-                const pieData = currentMonthExpenses.map(expense => ({
-                    id: expense.category,
-                    label: expense.category,
-                    value: expense.amount,
-                }))
+                const groupedExpenses = currentMonthExpenses.reduce((acc, expense) => {
+                    if (!acc[expense.category]) {
+                        acc[expense.category] = 0;
+                    }
+                    acc[expense.category] += expense.amount;
+                    return acc;
+                }, {});
+
+                const pieData = Object.keys(groupedExpenses).map(category => ({
+                    id: category,
+                    label: category,
+                    value: groupedExpenses[category],
+                }));
 
                 setExpense(pieData)
             })

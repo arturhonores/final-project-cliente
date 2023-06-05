@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, useCallback } from "react"
 import { AuthContext } from "../contexts/auth.context"
 import expensesService from "../services/expense.services"
 import { Link, useParams } from "react-router-dom"
@@ -17,7 +17,7 @@ const CategoryDetailsPage = () => {
     const [showModal, setShowModal] = useState(false)
     const [selectedExpense, setSelectedExpense] = useState(null);
 
-    const loadListExpenses = () => {
+    const loadListExpenses = useCallback(() => {
         expensesService
             .getCategory(category)
             .then(({ data }) => {
@@ -26,11 +26,11 @@ const CategoryDetailsPage = () => {
             }
             )
             .catch(err => console.log(err))
-    }
+    }, [category, user._id])
 
     useEffect(() => {
         loadListExpenses()
-    }, [])
+    }, [loadListExpenses])
 
     const categoryIcons = {
         "Alimentación": <MdOutlineFoodBank />,
@@ -48,6 +48,23 @@ const CategoryDetailsPage = () => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
 
+    const formatDate = (dateStr) => {
+        const parts = dateStr.split('-');
+        return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+
+    const groupByDate = (expenses) => {
+        return expenses.reduce((acc, curr) => {
+            const date = new Date(curr.date);
+            const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().split("T")[0];
+            if (!acc[localDate]) {
+                acc[localDate] = [];
+            }
+            acc[localDate].push(curr);
+            return acc;
+        }, {});
+    }
+
     return (
         <div className="max-w-7xl px-4 mx-auto">
             <div className="h-screen flex flex-col justify-center items-center">
@@ -57,11 +74,26 @@ const CategoryDetailsPage = () => {
                     {!categoryList ? (
                         <p>...cargando</p>
                     ) : (
-                        <ul>
-                            {categoryList.map((elm) => (
-                                <li className="flex justify-between px-4 pt-3 pb-2 shadow-sm" key={elm._id} ><p className="cursor-pointer" onClick={() => { setShowModal(true); setSelectedExpense(elm) }}>{capitalize(elm.description)}</p> <div className="flex items-center gap-x-2"><p>€ {elm.amount.toFixed(2)}</p><Link to={`/editar/${elm._id}`}><span><BiEditAlt></BiEditAlt></span></Link></div></li>
-                            ))}
-                        </ul>
+                        Object.entries(groupByDate(categoryList)).map(([date, expenses]) => (
+                            <div key={date}>
+                                <h2 className="text-right pr-4 text-slate-500 pt-2">{formatDate(date)}</h2>
+                                <ul>
+                                    {expenses.map((elm) => (
+                                        <li className="flex justify-between px-4 pt-3 pb-2 shadow-sm" key={elm._id}>
+                                            <p className="cursor-pointer" onClick={() => { setShowModal(true); setSelectedExpense(elm) }}>
+                                                {capitalize(elm.description)}
+                                            </p>
+                                            <div className="flex items-center gap-x-2">
+                                                <p>€ {elm.amount.toFixed(2)}</p>
+                                                <Link to={`/editar/${elm._id}`}>
+                                                    <span><BiEditAlt /></span>
+                                                </Link>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))
                     )}
                 </div>
             </div>
