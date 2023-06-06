@@ -22,7 +22,6 @@ const EditPerfilForm = () => {
     const { username, avatar } = userEdit
 
     useEffect(() => {
-        console.log(user._id)
         loadUser()
     }, [])
 

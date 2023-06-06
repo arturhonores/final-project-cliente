@@ -8,6 +8,7 @@ import CategoryDetailsPage from '../pages/CategoryDetailsPage'
 import EditExpense from '../pages/EditExpense'
 import GraphicsPage from '../pages/GraphicsPage'
 import EditPerfilPage from '../pages/EditPerfilPage'
+import PruebaPage from '../pages/PruebaPage'
 
 const AppRoutes = () => {
     return (
@@ -17,8 +18,9 @@ const AppRoutes = () => {
             <Route path='/iniciar-sesion' element={<LoginPage />}></Route>
             <Route path='/registro' element={<SingupPage />}></Route>
             <Route element={<PrivateRoute />}>
+                <Route path='/prueba' element={<PruebaPage />}></Route>
                 <Route path='/categoria/:category' element={<CategoryDetailsPage />}></Route>
-                <Route path='/editar/:gasto' element={<EditExpense />}></Route>
+                <Route path='/editar/:expense' element={<EditExpense />}></Route>
                 <Route path='/gastos' element={<ExpensesPage />}></Route>
                 <Route path='/graficos' element={<GraphicsPage />}></Route>
                 <Route path='/editar-perfil' element={<EditPerfilPage />}></Route>

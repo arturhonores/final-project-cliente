@@ -1,12 +1,19 @@
 import React from 'react'
 import EditPerfilForm from '../components/EditPerfilForm'
+import { useContext } from 'react'
+import { AuthContext } from '../contexts/auth.context';
 
+// TODO: NOMINAR EN INGLES
 const EditPerfilPage = () => {
+
+    const { user } = useContext(AuthContext)
+
     return (
         <div className="max-w-7xl px-4 mx-auto">
             <div className="h-screen flex flex-col justify-center items-center">
-                <div className="rounded-lg shadow-lg w-full pt-8 mt-14 md:w-1/2">
-                    <h2 className="text-center text-azul-oscuro uppercase font-bold">Editar Perfil</h2>
+                <div className="rounded-lg shadow-lg w-full py-8 mt-14 md:w-1/2">
+                    <img src={user.avatar} alt="" className='w-20 aspect-square object-cover rounded-full shadow-inner mx-auto -mt-16' />
+                    <h2 className="text-center text-azul-oscuro uppercase font-bold py-4">Editar Perfil</h2>
                     <EditPerfilForm />
                 </div>
             </div>

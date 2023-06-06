@@ -43,6 +43,7 @@ const CategoryDetailsPage = () => {
         "Otros gastos": <AiOutlineShoppingCart />
     }
 
+    // TODO: DESACOPLAR EN UTILS
     const capitalize = (str) => {
         if (typeof str !== 'string' || !str) return str;
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -71,6 +72,7 @@ const CategoryDetailsPage = () => {
                 <div className="rounded-lg shadow-lg w-full pt-8 mt-14 md:w-1/2">
                     <p className="flex justify-center text-2xl">{categoryIcons[category]}</p>
                     <h2 className="text-center text-azul-oscuro uppercase font-bold pt-2 pb-4">Gastos de {category}</h2>
+                    {/* TODO: DESACOPLAR EN COMPONENTE CATEGORYLIST */}
                     {!categoryList ? (
                         <p>...cargando</p>
                     ) : (

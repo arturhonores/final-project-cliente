@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/auth.context"
 import expensesService from '../services/expense.services'
 
 const ExpenseFormEdit = ({ expenseId }) => {
-    console.log(expenseId)
+
     const { user } = useContext(AuthContext)
     const [expenseEdit, setExpenseEdit] = useState({
         description: '',
@@ -33,6 +33,7 @@ const ExpenseFormEdit = ({ expenseId }) => {
     }
 
     useEffect(() => {
+        // TODO: DESACOPLAMOS LLAMADAS A LA API DE MOMNTAJE DE COMPONENTES 
         expensesService
             .getExpense(expenseId)
             .then(({ data }) => {
@@ -52,7 +53,8 @@ const ExpenseFormEdit = ({ expenseId }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        expensesService.editExpense(expenseId, expenseEdit)
+        expensesService
+            .editExpense(expenseId, expenseEdit)
             .then(() => navigate('/gastos'))
             .catch(err => {
                 console.error(err);

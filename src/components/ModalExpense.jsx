@@ -1,6 +1,7 @@
 import expensesService from "../services/expense.services"
 
 const ModalExpense = ({ showModal, setShowModal, expense, loadListExpenses }) => {
+
     const handleDelete = () => {
         expensesService
             .deleteExpense(expense._id)
@@ -10,6 +11,7 @@ const ModalExpense = ({ showModal, setShowModal, expense, loadListExpenses }) =>
             })
             .catch(err => console.log(err))
     }
+
     return (
         <>
             {showModal ? (
