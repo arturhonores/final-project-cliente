@@ -1,6 +1,12 @@
 import expensesService from '../services/expense.services'
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../contexts/auth.context"
+import { Link } from "react-router-dom"
+import { AiOutlineEuro, AiOutlineShoppingCart } from 'react-icons/ai'
+import { BiHome, BiTaxi } from 'react-icons/bi'
+import { GiClothes } from 'react-icons/gi'
+import { MdOutlineHealthAndSafety, MdOutlineFoodBank } from 'react-icons/md'
+import { GrGamepad } from 'react-icons/gr'
 
 const ExpensesListPeriod = () => {
     const { user } = useContext(AuthContext)
@@ -45,8 +51,19 @@ const ExpensesListPeriod = () => {
             .catch(err => console.log(err))
     }
 
+    const categoryIcons = {
+        "Alimentación": <MdOutlineFoodBank />,
+        "Cuentas y pagos": <AiOutlineEuro />,
+        "Hogar": <BiHome />,
+        "Transporte": <BiTaxi />,
+        "Ropa": <GiClothes />,
+        "Salud y Belleza": <MdOutlineHealthAndSafety />,
+        "Diversión": <GrGamepad />,
+        "Otros gastos": <AiOutlineShoppingCart />
+    }
+
     return (
-        <div className='rounded-lg shadow-lg w-full mt-5 md:h-[22rem]'>
+        <div className='w-full mt-5'>
             <div className='flex justify-evenly w-full'>
                 <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                 <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
@@ -57,7 +74,7 @@ const ExpensesListPeriod = () => {
                         ?
                         Object.keys(periodExpenses).map((category, index) => (
                             <div className="rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center" key={index}>
-                                <p>{category}</p> <p> {periodExpenses[category]}</p>
+                                <p className="flex items-center gap-x-2"><span className='text-xl'>{categoryIcons[category]}</span>{category}</p> <p>€ {periodExpenses[category]}</p>
                             </div>
                         ))
                         :

@@ -33,8 +33,8 @@ const PruebaPage = () => {
     }
 
     return (
-        <div className="max-w-7xl px-4 mx-auto h-screen flex flex-col justify-center items-center mt-24 md:mt-0 md:flex-row md:gap-x-8">
-            <div className="rounded-lg shadow-lg w-full pt-8 mt-16 md:mt-0 md:w-1/2 ">
+        <div className="max-w-7xl px-4 mx-auto mt-14 flex flex-col items-center gap-y-8 md:h-screen md:mt-0 md:flex-row md:gap-x-8 md:gap-y-0 md:justify-center md:items-center">
+            <div className="rounded-lg shadow-lg w-full pt-8 md:mt-0 md:w-1/2 ">
                 <h2 className="text-center text-azul-oscuro uppercase font-bold">Agregar Gasto</h2>
                 <ExpensesForm loadExpenses={loadExpenses}></ExpensesForm>
             </div>

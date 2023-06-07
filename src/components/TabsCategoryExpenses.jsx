@@ -16,7 +16,7 @@ const TabsCategoryExpenses = ({ expenses }) => {
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
                             <a
                                 className={
-                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-lg block leading-normal " +
+                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-full block leading-normal " +
                                     (openTab === 1
                                         ? "text-white bg-verde-oscuro"
                                         : "text-verde-oscuro bg-white")
@@ -35,7 +35,7 @@ const TabsCategoryExpenses = ({ expenses }) => {
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
                             <a
                                 className={
-                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-full block leading-normal " +
                                     (openTab === 2
                                         ? "text-white bg-verde-oscuro"
                                         : "text-verde-oscuro bg-white")
@@ -53,7 +53,7 @@ const TabsCategoryExpenses = ({ expenses }) => {
                         </li>
                     </ul>
                     <div className="relative flex flex-col min-w-0 w-full mb-6 z-10">
-                        <div className="px-4 flex-auto w-full">
+                        <div className="flex-auto w-full">
                             <div className={openTab === 1 ? "block w-full" : "hidden"} id="link1">
                                 <div className="w-full block">
                                     <ExpensesList expenses={expenses}></ExpensesList>
