@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import ExpensesForm from "../components/ExpensesForm"
 import { AuthContext } from "../contexts/auth.context"
-import ExpensesList from "../components/ExpensesList"
 import expensesService from "../services/expense.services"
 import TabsCategoryExpenses from '../components/TabsCategoryExpenses'
 
@@ -49,7 +48,12 @@ const PruebaPage = () => {
                             :
                             <ExpensesList expenses={expenses}></ExpensesList>
                     } */}
-                    <TabsCategoryExpenses></TabsCategoryExpenses>
+                    {!expenses
+                        ?
+                        <p>...cargando</p>
+                        :
+                        <TabsCategoryExpenses expenses={expenses}></TabsCategoryExpenses>
+                    }
                 </div>
             </div>
         </div>
