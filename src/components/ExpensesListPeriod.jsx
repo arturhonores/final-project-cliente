@@ -1,16 +1,11 @@
-import expensesService from '../services/expense.services'
-import { useContext, useEffect, useState } from "react"
-import { AuthContext } from "../contexts/auth.context"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 import { AiOutlineEuro, AiOutlineShoppingCart } from 'react-icons/ai'
 import { BiHome, BiTaxi } from 'react-icons/bi'
 import { GiClothes } from 'react-icons/gi'
 import { MdOutlineHealthAndSafety, MdOutlineFoodBank } from 'react-icons/md'
 import { GrGamepad } from 'react-icons/gr'
 
-const ExpensesListPeriod = () => {
-    const { user } = useContext(AuthContext)
-
+const ExpensesListPeriod = ({ expenses }) => {
     // Define las fechas de inicio y fin por defecto
     const currentYear = new Date().getFullYear();
     const defaultStartDate = `${currentYear}-01-01`;
@@ -19,36 +14,37 @@ const ExpensesListPeriod = () => {
     const [startDate, setStartDate] = useState(defaultStartDate)
     const [endDate, setEndDate] = useState(defaultEndDate)
     const [periodExpenses, setPeriodExpenses] = useState({})
+    const [totalExpenses, setTotalExpenses] = useState(0);
+
+    //Cálculo de total de categorías por período
+    useEffect(() => {
+        const total = Object.values(periodExpenses).reduce((acc, value) => acc + value, 0);
+        setTotalExpenses(total);
+    }, [periodExpenses]);
 
     useEffect(() => {
         if (startDate && endDate) {
             loadPeriodExpenses();
         }
-    }, [startDate, endDate])
+    }, [startDate, endDate, expenses])
 
     const loadPeriodExpenses = () => {
-        expensesService
-            .getExpenses()
-            .then(({ data }) => {
-                const ownedExpenses = data.filter(elm => user._id === elm.owner)
-                const periodExpenses = ownedExpenses.filter(expense => {
-                    const expenseDate = new Date(expense.date).getTime();
-                    const start = new Date(startDate).getTime();
-                    const end = new Date(endDate).getTime();
-                    return expenseDate >= start && expenseDate <= end;
-                })
+        const periodExpenses = expenses.filter(expense => {
+            const expenseDate = new Date(expense.date).getTime();
+            const start = new Date(startDate).getTime();
+            const end = new Date(endDate).getTime();
+            return expenseDate >= start && expenseDate <= end;
+        })
 
-                const groupedExpenses = periodExpenses.reduce((acc, expense) => {
-                    if (!acc[expense.category]) {
-                        acc[expense.category] = 0;
-                    }
-                    acc[expense.category] += expense.amount;
-                    return acc;
-                }, {});
+        const groupedExpenses = periodExpenses.reduce((acc, expense) => {
+            if (!acc[expense.category]) {
+                acc[expense.category] = 0;
+            }
+            acc[expense.category] += expense.amount;
+            return acc;
+        }, {});
 
-                setPeriodExpenses(groupedExpenses)
-            })
-            .catch(err => console.log(err))
+        setPeriodExpenses(groupedExpenses)
     }
 
     const categoryIcons = {
@@ -80,6 +76,7 @@ const ExpensesListPeriod = () => {
                         :
                         <p className='text-center'>...cargando</p>
                 }
+                <div className='rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center w-full text-verde-oscuro font-bold'><span>TOTAL</span><span>€ {totalExpenses}</span></div>
             </div>
         </div>
     )

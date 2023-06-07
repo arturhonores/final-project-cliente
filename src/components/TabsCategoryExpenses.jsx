@@ -61,7 +61,7 @@ const TabsCategoryExpenses = ({ expenses }) => {
                             </div>
                             <div className={openTab === 2 ? "block w-full" : "hidden"} id="link2">
                                 <div className="w-full block">
-                                    <ExpensesListPeriod></ExpensesListPeriod>
+                                    <ExpensesListPeriod expenses={expenses}></ExpensesListPeriod>
                                 </div>
                             </div>
                         </div>
