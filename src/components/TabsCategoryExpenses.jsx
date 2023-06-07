@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ExpensesList from "../components/ExpensesList"
+import ExpensesListPeriod from "./ExpensesListPeriod";
 
 const TabsCategoryExpenses = ({ expenses }) => {
     const [openTab, setOpenTab] = useState(1);
@@ -51,32 +52,17 @@ const TabsCategoryExpenses = ({ expenses }) => {
                             </a>
                         </li>
                     </ul>
-                    {/* <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded z-10"> */}
                     <div className="relative flex flex-col min-w-0 w-full mb-6 z-10">
-                        <div className="px-4 py-5 flex-auto bg-red-500 w-full">
+                        <div className="px-4 flex-auto w-full">
                             <div className={openTab === 1 ? "block w-full" : "hidden"} id="link1">
-                                {/* <p className="h-72">
-                                        Collaboratively administrate empowered markets via
-                                        plug-and-play networks. Dynamically procrastinate B2C users
-                                        after installed base benefits.
-                                        <br />
-                                        <br /> Dramatically visualize customer directed convergence
-                                        without revolutionary ROI.
-                                    </p> */}
                                 <div className="w-full block">
                                     <ExpensesList expenses={expenses}></ExpensesList>
                                 </div>
                             </div>
-                            <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                                <p className="h-72">
-                                    Completely synergize resource taxing relationships via
-                                    premier niche markets. Professionally cultivate one-to-one
-                                    customer service with robust ideas.
-                                    <br />
-                                    <br />
-                                    Dynamically innovate resource-leveling customer service for
-                                    state of the art customer service.
-                                </p>
+                            <div className={openTab === 2 ? "block w-full" : "hidden"} id="link2">
+                                <div className="w-full block">
+                                    <ExpensesListPeriod></ExpensesListPeriod>
+                                </div>
                             </div>
                         </div>
                     </div>

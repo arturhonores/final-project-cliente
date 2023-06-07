@@ -33,28 +33,18 @@ const PruebaPage = () => {
     }
 
     return (
-        <div className="max-w-7xl px-4 mx-auto">
-            <div className="h-screen flex flex-col justify-center items-center md:flex-row md:gap-x-8">
-                <div className="rounded-lg shadow-lg w-full pt-12 mt-16 md:mt-0 md:w-1/2 ">
-                    <h2 className="text-center text-azul-oscuro uppercase font-bold">Agregar Gasto</h2>
-                    <ExpensesForm loadExpenses={loadExpenses}></ExpensesForm>
-                </div>
-                <div className="flex flex-col justify-center items-center w-full md:w-1/2">
-                    {/* <h2 className="uppercase text-azul-oscuro font-bold">Gastos del Mes</h2>
-                    {
-                        !expenses
-                            ?
-                            <p>...cargando</p>
-                            :
-                            <ExpensesList expenses={expenses}></ExpensesList>
-                    } */}
-                    {!expenses
-                        ?
-                        <p>...cargando</p>
-                        :
-                        <TabsCategoryExpenses expenses={expenses}></TabsCategoryExpenses>
-                    }
-                </div>
+        <div className="max-w-7xl px-4 mx-auto h-screen flex flex-col justify-center items-center mt-24 md:mt-0 md:flex-row md:gap-x-8">
+            <div className="rounded-lg shadow-lg w-full pt-8 mt-16 md:mt-0 md:w-1/2 ">
+                <h2 className="text-center text-azul-oscuro uppercase font-bold">Agregar Gasto</h2>
+                <ExpensesForm loadExpenses={loadExpenses}></ExpensesForm>
+            </div>
+            <div className="flex flex-col justify-center items-center w-full md:w-1/2">
+                {!expenses
+                    ?
+                    <p>...cargando</p>
+                    :
+                    <TabsCategoryExpenses expenses={expenses}></TabsCategoryExpenses>
+                }
             </div>
         </div>
     )
