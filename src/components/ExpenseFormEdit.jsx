@@ -55,7 +55,7 @@ const ExpenseFormEdit = ({ expenseId }) => {
         e.preventDefault()
         expensesService
             .editExpense(expenseId, expenseEdit)
-            .then(() => navigate('/gastos'))
+            .then(() => navigate(`/categoria/${expenseEdit.category}`))
             .catch(err => {
                 console.error(err);
             });

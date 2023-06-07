@@ -25,7 +25,7 @@ const ModalExpense = ({ showModal, setShowModal, expense, loadListExpenses }) =>
                                 {/*header*/}
                                 <div className="flex items-start justify-center p-5 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-2xl text-center font-semibold">
-                                        <p>€ {expense.amount}</p>
+                                        <p className="text-verde-oscuro font-bold">€ {expense.amount}</p>
                                     </h3>
                                 </div>
                                 {/*body*/}

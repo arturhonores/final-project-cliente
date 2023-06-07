@@ -4,6 +4,7 @@ import { BiHome, BiTaxi } from 'react-icons/bi'
 import { GiClothes } from 'react-icons/gi'
 import { MdOutlineHealthAndSafety, MdOutlineFoodBank } from 'react-icons/md'
 import { GrGamepad } from 'react-icons/gr'
+import { Link } from "react-router-dom"
 
 const ExpensesListPeriod = ({ expenses }) => {
     // Define las fechas de inicio y fin por defecto
@@ -69,14 +70,16 @@ const ExpensesListPeriod = ({ expenses }) => {
                     Object.keys(periodExpenses).length > 0
                         ?
                         Object.keys(periodExpenses).map((category, index) => (
-                            <div className="rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center" key={index}>
-                                <p className="flex items-center gap-x-2"><span className='text-xl'>{categoryIcons[category]}</span>{category}</p> <p>€ {periodExpenses[category]}</p>
-                            </div>
+                            <Link to={`/categoria/${category}`} key={index}>
+                                <div className="rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center">
+                                    <p className="flex items-center gap-x-2"><span className='text-xl'>{categoryIcons[category]}</span>{category}</p> <p>€ {periodExpenses[category].toFixed(2)}</p>
+                                </div>
+                            </Link>
                         ))
                         :
                         <p className='text-center'>...cargando</p>
                 }
-                <div className='rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center w-full text-verde-oscuro font-bold'><span>TOTAL</span><span>€ {totalExpenses}</span></div>
+                <div className='rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center w-full text-verde-oscuro font-bold'><span>TOTAL</span><span>€ {totalExpenses.toFixed(2)}</span></div>
             </div>
         </div>
     )
