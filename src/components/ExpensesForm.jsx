@@ -49,7 +49,7 @@ const ExpensesForm = ({ loadExpenses }) => {
     return (
         <form onSubmit={handleSubmit} className="p-12 flex flex-col items-center gap-7">
             <section className="flex flex-col justify-between items-center w-full gap-y-3 md:flex-row md:gap-y-0">
-                <select name="category" value={expenseData.category} onChange={handleInputChange} className="focus:ring-verde-oscuro focus:border-none focus:outline-none">
+                <select name="category" value={expenseData.category} onChange={handleInputChange} className="focus:ring-verde-oscuro focus:border-none focus:outline-none border-slate-400">
                     <option value="Alimentación">Alimentación</option>
                     <option value="Cuentas y pagos">Cuentas y pagos</option>
                     <option value="Hogar">Hogar</option>
@@ -59,7 +59,7 @@ const ExpensesForm = ({ loadExpenses }) => {
                     <option value="Diversión">Diversión</option>
                     <option value="Otros gastos">Otros gastos</option>
                 </select>
-                <input type="date" name="date" value={expenseData.date} onChange={handleInputChange} className="focus:ring-verde-oscuro focus:border-none focus:outline-none"></input>
+                <input type="date" name="date" value={expenseData.date} onChange={handleInputChange} className="focus:ring-verde-oscuro focus:border-none focus:outline-none border-slate-400"></input>
             </section>
 
             <input className="text-center border-0 border-b-2 border-slate-400 placeholder:text-slate-400 focus:border-none focus:outline-none focus:ring-verde-oscuro"

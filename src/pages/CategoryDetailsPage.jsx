@@ -16,6 +16,7 @@ const CategoryDetailsPage = () => {
     const [categoryList, setCategoryList] = useState()
     const [showModal, setShowModal] = useState(false)
     const [selectedExpense, setSelectedExpense] = useState(null);
+    const [sortCriteria, setSortCriteria] = useState("sele");
 
     const loadListExpenses = useCallback(() => {
         expensesService
@@ -31,6 +32,16 @@ const CategoryDetailsPage = () => {
     useEffect(() => {
         loadListExpenses()
     }, [loadListExpenses])
+
+    useEffect(() => {
+        if (sortCriteria === "amount") {
+            const sortedList = [...categoryList].sort((a, b) => b.amount - a.amount);
+            setCategoryList(sortedList);
+        } else if (sortCriteria === "date") {
+            const sortedList = [...categoryList].sort((a, b) => new Date(b.date) - new Date(a.date));
+            setCategoryList(sortedList);
+        }
+    }, [sortCriteria, categoryList])
 
     const categoryIcons = {
         "Alimentación": <MdOutlineFoodBank />,
@@ -67,11 +78,18 @@ const CategoryDetailsPage = () => {
     }
 
     return (
-        <div className="max-w-7xl px-4 mx-auto mt-16 flex flex-col items-center gap-y-8 md:h-screen md:mt-0 md:flex-row md:gap-x-8 md:gap-y-0 md:justify-center md:items-center md:min-h-[700px]">
+        <div className="max-w-7xl px-4 mx-auto my-14 flex flex-col items-center gap-y-8 md:h-screen md:my-0 md:flex-row md:gap-x-8 md:gap-y-0 md:justify-center md:items-center md:min-h-[700px]">
             <div className="rounded-lg shadow-lg w-full pt-8 mt-14 md:w-1/2">
                 <div>
                     <p className="flex justify-center text-2xl">{categoryIcons[category]}</p>
                     <h2 className="text-center text-azul-oscuro uppercase font-bold pt-2 pb-4">Gastos de {category}</h2>
+                    <div className="pr-4 py-4">
+                        <select className="block ml-auto border-slate-400 focus:border-none focus:ring-verde-oscuro focus:outline-none" onChange={(e) => setSortCriteria(e.target.value)}>
+                            <option value="sele">Ordenar</option>
+                            <option value="amount">por cantidad</option>
+                            <option value="date">por fecha</option>
+                        </select>
+                    </div>
                 </div>
                 {/* TODO: DESACOPLAR EN COMPONENTE CATEGORYLIST */}
                 <div className="max-h-96 overflow-y-auto">
