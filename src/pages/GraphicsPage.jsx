@@ -3,6 +3,7 @@ import expensesService from '../services/expense.services'
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../contexts/auth.context"
 import PieGraphicPeriod from '../components/PieGraphicPeriod'
+import { HiOutlineArrowLongRight } from "react-icons/hi2"
 
 const GraphicsPage = () => {
 
@@ -105,16 +106,17 @@ const GraphicsPage = () => {
     return (
         <div className="max-w-7xl px-4 mx-auto mt-16 flex flex-col items-center gap-y-4 md:h-screen md:mt-0 md:flex-row md:gap-x-8 md:gap-y-0 md:justify-center md:items-center md:min-h-[700px]">
             <div className="rounded-lg shadow-lg w-full pt-8 mt-14 md:w-1/2 h-80 md:h-96">
-                <h2 className="text-center font-bold text-verde-claro uppercase">Gastos del Mes</h2>
+                <h2 className="text-center font-bold text-verde-oscuro uppercase">Gastos del Mes</h2>
                 <div className='h-64 md:h-80'>
                     {expenses ? <PieGraphic data={expenses}></PieGraphic> : 'cargando...'}
                 </div>
             </div>
             <div className='rounded-lg shadow-lg w-full pt-8 mt-14 md:w-1/2 h-80 md:h-96'>
-                <h2 className="text-center font-bold text-verde-claro uppercase">Gastos por Período</h2>
-                <div className='flex justify-evenly pt-4'>
-                    <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                    <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+                <h2 className="text-center font-bold text-verde-oscuro uppercase">Gastos por Período</h2>
+                <div className='flex justify-evenly pt-4 items-center'>
+                    <input className='focus:border-none focus:outline-none focus:ring-verde-oscuro border-slate-400' type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                    <p><HiOutlineArrowLongRight /></p>
+                    <input className='focus:border-none focus:outline-none focus:ring-verde-oscuro border-slate-400' type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
                 </div>
                 <div className='h-64 md:h-80'>
                     {periodExpenses ? <PieGraphicPeriod data={periodExpenses}></PieGraphicPeriod> : <p className='text-center'>...cargando</p>}

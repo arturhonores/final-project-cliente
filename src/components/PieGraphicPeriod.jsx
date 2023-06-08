@@ -41,15 +41,6 @@ const PieGraphicPeriod = ({ data }) => {
             defs={
                 [
                     {
-                        id: 'dots',
-                        type: 'patternDots',
-                        background: 'inherit',
-                        color: 'rgba(255, 255, 255, 0.3)',
-                        size: 4,
-                        padding: 1,
-                        stagger: true
-                    },
-                    {
                         id: 'lines',
                         type: 'patternLines',
                         background: 'inherit',
@@ -59,6 +50,12 @@ const PieGraphicPeriod = ({ data }) => {
                         spacing: 10
                     }
                 ]}
+            fill={[
+                {
+                    match: '*',
+                    id: 'lines',
+                }
+            ]}
             legends={[]}
         />
     );

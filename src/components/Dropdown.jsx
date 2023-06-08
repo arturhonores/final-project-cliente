@@ -25,31 +25,39 @@ const Dropdown = () => {
                     <div
                         className="py-2 px-4 block"
                     >
-                        <p className='text-center text-white font-semibold uppercase'>¡Hola,<span>{user.username}</span>!</p>
+                        <p className='text-center text-white font-bold uppercase'>¡Hola,<span>{user.username}</span>!</p>
                     </div>
                     <div
                         className="py-2 px-4 block cursor-pointer hover:bg-verde-oscuro"
                         onClick={() => { setOpen(false); navigate("/editar-perfil") }}
                     >
-                        <p className='flex items-center gap-x-2 text-white font-semibold uppercase'><span><BiEdit /></span> <span>Editar perfil</span></p>
+                        <p className='flex items-center gap-x-2 text-white font-bold uppercase'><span><BiEdit /></span>
+                            <span>Editar perfil</span>
+                            {user.limit == 0 &&
+                                <span class="relative flex h-3 w-3">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                                </span>
+                            }
+                        </p>
                     </div>
                     <div
                         className="py-2 px-4 block cursor-pointer hover:bg-verde-oscuro"
                         onClick={() => { setOpen(false); navigate("/gastos") }}
                     >
-                        <p className='flex items-center gap-x-2 text-white font-semibold uppercase'><span><GiPayMoney /></span> <span>Gastos</span></p>
+                        <p className='flex items-center gap-x-2 text-white font-bold uppercase'><span><GiPayMoney /></span> <span>Gastos</span></p>
                     </div>
                     <div
                         className="py-2 px-4 block cursor-pointer hover:bg-verde-oscuro"
                         onClick={() => { setOpen(false); navigate("/graficos") }}
                     >
-                        <p className='flex items-center gap-x-2 text-white font-semibold uppercase'><span><VscGraph /></span> <span>Gráficos</span></p>
+                        <p className='flex items-center gap-x-2 text-white font-bold uppercase'><span><VscGraph /></span> <span>Gráficos</span></p>
                     </div>
                     <div
                         className="py-2 px-4 block cursor-pointer hover:bg-verde-oscuro"
                         onClick={() => { setOpen(false); logout() }}
                     >
-                        <p className='flex items-center gap-x-2 text-white font-semibold uppercase'><span><BiLogOut /></span> <span>Cerrar Sesión</span></p>
+                        <p className='flex items-center gap-x-2 text-white font-bold uppercase'><span><BiLogOut /></span> <span>Cerrar Sesión</span></p>
                     </div>
                 </div>
             </div>

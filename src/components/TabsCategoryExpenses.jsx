@@ -13,7 +13,7 @@ const TabsCategoryExpenses = ({ expenses }) => {
                         className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
                         role="tablist"
                     >
-                        <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <li className="-mb-px mr-2 last:mr-0 flex-auto text-center max-w-[50%]">
                             <a
                                 className={
                                     "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-full block leading-normal " +
@@ -29,10 +29,10 @@ const TabsCategoryExpenses = ({ expenses }) => {
                                 href="#link1"
                                 role="tablist"
                             >
-                                Mes
+                                Gastos del mes
                             </a>
                         </li>
-                        <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                        <li className="-mb-px mr-2 last:mr-0 flex-auto text-center max-w-[50%]">
                             <a
                                 className={
                                     "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-full block leading-normal " +
@@ -48,7 +48,7 @@ const TabsCategoryExpenses = ({ expenses }) => {
                                 href="#link2"
                                 role="tablist"
                             >
-                                Período
+                                Gastos por período
                             </a>
                         </li>
                     </ul>

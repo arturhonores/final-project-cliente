@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { AiOutlineEuro, AiOutlineShoppingCart } from 'react-icons/ai'
 import { BiHome, BiTaxi } from 'react-icons/bi'
 import { GiClothes } from 'react-icons/gi'
 import { MdOutlineHealthAndSafety, MdOutlineFoodBank } from 'react-icons/md'
 import { GrGamepad } from 'react-icons/gr'
 import { Link } from "react-router-dom"
+import { HiOutlineArrowLongRight } from "react-icons/hi2"
 
 const ExpensesListPeriod = ({ expenses }) => {
     // Define las fechas de inicio y fin por defecto
@@ -23,13 +24,7 @@ const ExpensesListPeriod = ({ expenses }) => {
         setTotalExpenses(total);
     }, [periodExpenses]);
 
-    useEffect(() => {
-        if (startDate && endDate) {
-            loadPeriodExpenses();
-        }
-    }, [startDate, endDate, expenses])
-
-    const loadPeriodExpenses = () => {
+    const loadPeriodExpenses = useCallback(() => {
         const periodExpenses = expenses.filter(expense => {
             const expenseDate = new Date(expense.date).getTime();
             const start = new Date(startDate).getTime();
@@ -45,8 +40,14 @@ const ExpensesListPeriod = ({ expenses }) => {
             return acc;
         }, {});
 
-        setPeriodExpenses(groupedExpenses)
-    }
+        setPeriodExpenses(groupedExpenses);
+    }, [expenses, startDate, endDate]);
+
+    useEffect(() => {
+        if (startDate && endDate) {
+            loadPeriodExpenses();
+        }
+    }, [startDate, endDate, expenses, loadPeriodExpenses]);
 
     const categoryIcons = {
         "Alimentación": <MdOutlineFoodBank />,
@@ -61,9 +62,10 @@ const ExpensesListPeriod = ({ expenses }) => {
 
     return (
         <div className='w-full mt-5'>
-            <div className='flex justify-evenly w-full'>
-                <input type="date" className="focus:border-none focus:outline-none focus:ring-verde-oscuro" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-                <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+            <div className='flex justify-evenly items-center w-full'>
+                <input type="date" className="focus:border-none focus:outline-none focus:ring-verde-claro" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                <p><HiOutlineArrowLongRight /></p>
+                <input type="date" className="focus:border-none focus:outline-none focus:ring-verde-claro" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
             </div>
             <div className='w-full'>
                 {

@@ -25,18 +25,18 @@ const ModalExpense = ({ showModal, setShowModal, expense, loadListExpenses }) =>
                                 {/*header*/}
                                 <div className="flex items-start justify-center p-5 border-b border-solid border-slate-200 rounded-t">
                                     <h3 className="text-2xl text-center font-semibold">
-                                        <p className="text-verde-oscuro font-bold">€ {expense.amount}</p>
+                                        <p className="font-bold">€ {expense.amount}</p>
                                     </h3>
                                 </div>
                                 {/*body*/}
                                 <div className="relative p-6 flex-auto">
-                                    <p className="my-4 text-slate-500 text-base leading-relaxed">
-                                        Descripción: {expense.description}
+                                    <p className="my-4 text-slate-600 text-base leading-relaxed">
+                                        Descripción: {expense.description.charAt(0).toUpperCase() + expense.description.slice(1).toLowerCase()}
                                     </p>
-                                    <p className="my-4 text-slate-500 text-base leading-relaxed">
+                                    <p className="my-4 text-slate-600 text-base leading-relaxed">
                                         Categoría: {expense.category}
                                     </p>
-                                    <p className="my-4 text-slate-500 text-base leading-relaxed">
+                                    <p className="my-4 text-slate-600 text-base leading-relaxed">
                                         Día: {new Date(expense.date).toLocaleDateString()}
                                     </p>
                                 </div>
