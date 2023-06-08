@@ -36,6 +36,9 @@ const PieGraphic = ({ data }) => {
                     ]
                 ]
             }}
+            theme={{
+                fontSize: 14
+            }}
             defs={
                 [
                     {

@@ -35,6 +35,9 @@ const PieGraphicPeriod = ({ data }) => {
                     ]
                 ]
             }}
+            theme={{
+                fontSize: 14
+            }}
             defs={
                 [
                     {
