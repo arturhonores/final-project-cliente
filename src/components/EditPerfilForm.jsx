@@ -8,19 +8,18 @@ import usersService from '../services/user.services'
 
 const EditPerfilForm = () => {
 
-
     const { user, setUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const [userEdit, setUserEdit] = useState({
         username: user.username,
         avatar: user.avatar,
+        limit: user.limit
     })
 
     const [loadingImage, setLoadingImage] = useState(false)
 
-    const { username, avatar } = userEdit
-
+    const { username, avatar, limit } = userEdit
     useEffect(() => {
         loadUser()
     }, [])
@@ -46,7 +45,7 @@ const EditPerfilForm = () => {
             .userEdit(user._id, userEdit)
             .then((response) => {
                 setUser(userEdit)  // actualizar los datos del usuario en el contexto
-                navigate("/")
+                navigate("/gastos")
             })
             .catch(err => console.log(err))
     }
@@ -80,6 +79,10 @@ const EditPerfilForm = () => {
                 <div className="w-3/4 md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Correo</label>
                     <input className="rounded-lg w-full border-gray-400 bg-slate-200 cursor-not-allowed" type='email' disabled value={user.email} id='email' name='email' />
+                </div>
+                <div className="w-3/4 md:w-1/2 mx-auto">
+                    <label className="block text-left text-gray-500 text-sm font-bold mb-2">Límite de gastos</label>
+                    <input className="rounded-lg w-full border-gray-400" type='number' min='0' onChange={handleInputChange} value={limit} id='limit' name='limit' />
                 </div>
                 <div className="w-3/4 md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Avatar</label>

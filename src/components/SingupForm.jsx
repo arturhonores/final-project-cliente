@@ -56,7 +56,7 @@ const SingupForm = () => {
         <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
             <div className="flex flex-col gap-y-4 gap-x-4 md:flex-row md:gap-y-0">
                 <div className="w-3/4 md:w-1/2 mx-auto">
-                    <label className="block text-left text-gray-500 text-sm font-bold mb-2">Username</label>
+                    <label className="block text-left text-gray-500 text-sm font-bold mb-2">Nombre</label>
                     <input className="rounded-lg w-full border-gray-400" id='username' type='text' value={username} onChange={handleInputChange} name='username' />
                 </div>
                 <div className="w-3/4 md:w-1/2 mx-auto">

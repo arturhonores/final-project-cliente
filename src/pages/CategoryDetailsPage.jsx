@@ -67,12 +67,14 @@ const CategoryDetailsPage = () => {
     }
 
     return (
-        <div className="max-w-7xl px-4 mx-auto">
-            <div className="h-screen flex flex-col justify-center items-center">
-                <div className="rounded-lg shadow-lg w-full pt-8 mt-14 md:w-1/2">
+        <div className="max-w-7xl px-4 mx-auto mt-16 flex flex-col items-center gap-y-8 md:h-screen md:mt-0 md:flex-row md:gap-x-8 md:gap-y-0 md:justify-center md:items-center md:min-h-[700px]">
+            <div className="rounded-lg shadow-lg w-full pt-8 mt-14 md:w-1/2">
+                <div>
                     <p className="flex justify-center text-2xl">{categoryIcons[category]}</p>
                     <h2 className="text-center text-azul-oscuro uppercase font-bold pt-2 pb-4">Gastos de {category}</h2>
-                    {/* TODO: DESACOPLAR EN COMPONENTE CATEGORYLIST */}
+                </div>
+                {/* TODO: DESACOPLAR EN COMPONENTE CATEGORYLIST */}
+                <div className="max-h-96 overflow-y-auto">
                     {!categoryList ? (
                         <p>...cargando</p>
                     ) : (
@@ -81,7 +83,7 @@ const CategoryDetailsPage = () => {
                                 <h2 className="text-right pr-4 text-slate-500 pt-2">{formatDate(date)}</h2>
                                 <ul>
                                     {expenses.map((elm) => (
-                                        <li className="flex justify-between px-4 pt-3 pb-2 shadow-sm" key={elm._id}>
+                                        <li className="flex justify-between px-4 pt-3 pb-2 shadow-sm hover:bg-neutral-200" key={elm._id}>
                                             <p className="cursor-pointer" onClick={() => { setShowModal(true); setSelectedExpense(elm) }}>
                                                 {capitalize(elm.description)}
                                             </p>
