@@ -40,11 +40,11 @@ const LoginForm = () => {
             <div className="flex flex-col gap-y-4 gap-x-4">
                 <div className="w-full md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Email</label>
-                    <input className="rounded-lg w-full border-gray-400" id='email' type='email' value={email} onChange={handleInputChange} name='email' />
+                    <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" id='email' type='email' value={email} onChange={handleInputChange} name='email' />
                 </div>
                 <div className="w-full md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Contraseña</label>
-                    <input className="rounded-lg w-full border-gray-400" type='password' id='password' value={password} onChange={handleInputChange} name='password' />
+                    <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" type='password' id='password' value={password} onChange={handleInputChange} name='password' />
                 </div>
             </div>
             <button className="bg-verde-oscuro w-1/5 rounded-full mx-auto py-2 text-white hover:bg-verde-claro font-bold" type='submit'>Enviar</button>

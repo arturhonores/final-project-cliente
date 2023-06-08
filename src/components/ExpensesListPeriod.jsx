@@ -62,7 +62,7 @@ const ExpensesListPeriod = ({ expenses }) => {
     return (
         <div className='w-full mt-5'>
             <div className='flex justify-evenly w-full'>
-                <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                <input type="date" className="focus:border-none focus:outline-none focus:ring-verde-oscuro" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                 <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
             </div>
             <div className='w-full'>
@@ -71,7 +71,7 @@ const ExpensesListPeriod = ({ expenses }) => {
                         ?
                         Object.keys(periodExpenses).map((category, index) => (
                             <Link to={`/categoria/${category}`} key={index}>
-                                <div className="rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center">
+                                <div className="rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center hover:bg-neutral-200 active:bg-neutral-200">
                                     <p className="flex items-center gap-x-2"><span className='text-xl'>{categoryIcons[category]}</span>{category}</p> <p>€ {periodExpenses[category].toFixed(2)}</p>
                                 </div>
                             </Link>
