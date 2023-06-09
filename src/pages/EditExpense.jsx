@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { AuthContext } from "../contexts/auth.context"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import ExpenseFormEdit from "../components/ExpenseFormEdit"
 
 const EditExpense = () => {

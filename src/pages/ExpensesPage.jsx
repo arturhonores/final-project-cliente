@@ -25,7 +25,7 @@ const ExpensesPage = () => {
     }
 
     return (
-        <div className="max-w-7xl px-4 mx-auto mt-16 flex flex-col items-center gap-y-8 md:h-screen md:mt-0 md:flex-row md:gap-x-8 md:gap-y-0 md:justify-center md:items-center md:min-h-[700px]">
+        <div className="max-w-7xl px-4 mx-auto mt-16 flex flex-col items-center gap-y-8 md:h-screen md:mt-0 md:flex-row md:gap-x-8 md:gap-y-0 md:justify-center md:min-h-[700px]">
             <div className="rounded-lg shadow-lg w-full pt-8 md:mt-0 md:w-1/2 ">
                 <h2 className="text-center text-azul-oscuro uppercase font-bold">Agregar Gasto</h2>
                 <ExpensesForm loadExpenses={loadExpenses}></ExpensesForm>
