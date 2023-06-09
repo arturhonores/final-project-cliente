@@ -12,6 +12,7 @@ const SingupForm = () => {
         avatar: '',
     })
     const [loadingImage, setLoadingImage] = useState(false)
+    const [errors, setErrors] = useState([])
 
     const navigate = useNavigate()
 

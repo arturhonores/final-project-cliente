@@ -38,7 +38,7 @@ const ExpensesList = ({ expenses }) => {
 
     const calculateTotalExpenses = () => {
         const total = currentMonthExpenses.reduce((sum, expense) => sum + expense.amount, 0)
-        return total.toFixed(2);
+        return Number(total.toFixed(2));
     }
 
     return (
