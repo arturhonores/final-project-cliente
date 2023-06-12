@@ -16,7 +16,7 @@ const TabsCategoryExpenses = ({ expenses }) => {
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center max-w-[50%]">
                             <a
                                 className={
-                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-full block leading-normal " +
+                                    "text-xs font-bold uppercase px-2 py-3 shadow-lg rounded-full block leading-normal md:px-5 " +
                                     (openTab === 1
                                         ? "text-white bg-verde-oscuro"
                                         : "text-verde-oscuro bg-white")
@@ -35,7 +35,7 @@ const TabsCategoryExpenses = ({ expenses }) => {
                         <li className="-mb-px mr-2 last:mr-0 flex-auto text-center max-w-[50%]">
                             <a
                                 className={
-                                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded-full block leading-normal " +
+                                    "text-xs font-bold uppercase px-2 py-3 shadow-lg rounded-full block leading-normal md:px-5 " +
                                     (openTab === 2
                                         ? "text-white bg-verde-oscuro"
                                         : "text-verde-oscuro bg-white")
