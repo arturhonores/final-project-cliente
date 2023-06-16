@@ -1,5 +1,6 @@
 import { useState } from "react"
 import expensesService from "../services/expense.services"
+import AlertErrors from "./AlertErrors";
 
 const ExpensesForm = ({ loadExpenses }) => {
 
@@ -43,8 +44,12 @@ const ExpensesForm = ({ loadExpenses }) => {
                     date: formatDate(new Date())
                 })
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setErrors(err.response.data.errorMessages)
+            })
     }
+
+    const [errors, setErrors] = useState([])
 
     return (
         <form onSubmit={handleSubmit} className="p-12 flex flex-col items-center gap-7">
@@ -70,6 +75,9 @@ const ExpensesForm = ({ loadExpenses }) => {
                 value={expenseData.description}
                 onChange={handleInputChange}
             />
+            {
+                errors.length > 0 && <AlertErrors error={errors[0]}></AlertErrors>
+            }
             <input className="text-center border-0 border-b-2 border-slate-400 placeholder:text-slate-400 focus:border-none focus:outline-none focus:ring-verde-oscuro"
                 type="number"
                 step="0.01"
