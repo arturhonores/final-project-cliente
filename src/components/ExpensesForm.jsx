@@ -32,6 +32,7 @@ const ExpensesForm = ({ loadExpenses }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        setErrors([])
 
         expensesService
             .saveExpense(expenseData)

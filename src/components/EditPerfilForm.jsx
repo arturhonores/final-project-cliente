@@ -19,7 +19,7 @@ const EditPerfilForm = () => {
 
     const [loadingImage, setLoadingImage] = useState(false)
 
-    const { username, avatar, limit } = userEdit
+    const { username, limit } = userEdit
     useEffect(() => {
         loadUser()
     }, [])
@@ -36,7 +36,13 @@ const EditPerfilForm = () => {
 
     const handleInputChange = e => {
         const { value, name } = e.target
-        setUserEdit({ ...userEdit, [name]: value })
+        //lógica para asegurar limit = 0
+        let newValue = value;
+
+        if (name === "limit" && (value === "" || value === null)) {
+            newValue = "0";
+        }
+        setUserEdit({ ...userEdit, [name]: newValue })
     }
 
     const handleSubmit = e => {

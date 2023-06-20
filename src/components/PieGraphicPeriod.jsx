@@ -35,6 +35,7 @@ const PieGraphicPeriod = ({ data }) => {
                     ]
                 ]
             }}
+            arcLabel={d => `${d.value}%`}
             theme={{
                 fontSize: 14
             }}

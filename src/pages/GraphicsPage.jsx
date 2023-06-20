@@ -92,10 +92,14 @@ const GraphicsPage = () => {
                     return acc;
                 }, {});
 
+                // Calculamos el gasto total del periodo
+                const totalExpenses = Object.values(groupedExpenses).reduce((a, b) => a + b, 0);
+
+                // Transformamos cada valor de gasto en su representación porcentual
                 const pieData = Object.keys(groupedExpenses).map(category => ({
                     id: category,
                     label: category,
-                    value: groupedExpenses[category],
+                    value: parseFloat(((groupedExpenses[category] / totalExpenses) * 100).toFixed(1)), // Aquí se redondea el número a 1 decimal
                 }));
 
                 setPeriodExpenses(pieData)

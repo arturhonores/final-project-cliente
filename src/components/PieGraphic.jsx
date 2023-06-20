@@ -36,6 +36,8 @@ const PieGraphic = ({ data }) => {
                     ]
                 ]
             }}
+            // Personalizar las etiquetas de arco
+            arcLabel={d => `€ ${d.value}`}
             theme={{
                 fontSize: 14
             }}
