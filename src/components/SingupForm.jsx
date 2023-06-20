@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import authService from '../services/auth.services.js'
 import uploadServices from "../services/upload.services.js"
 import AlertErrors from "./AlertErrors.jsx"
-import { AiFillAlert } from "react-icons/ai"
+import { AiFillAlert, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 
 const SingupForm = () => {
 
@@ -14,9 +14,10 @@ const SingupForm = () => {
         avatar: '',
     })
 
-    const [validValues, setValidValues] = useState({ username: '', email: '', password: '' });
+    const [validValues, setValidValues] = useState({ username: null, email: null, password: null });
     const [loadingImage, setLoadingImage] = useState(false)
     const [errors, setErrors] = useState([])
+    const [showPassword, setShowPassword] = useState(false)
 
     const navigate = useNavigate()
 
@@ -85,11 +86,21 @@ const SingupForm = () => {
             <div className="flex flex-col gap-y-4 gap-x-4 md:flex-row md:gap-y-0">
                 <div className="w-3/4 md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Contraseña</label>
-                    <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" id='password' type='password' value={password} onChange={handleInputChange} name='password' />
+                    <div className="relative">
+                        <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" id='password'
+                            type={showPassword ? 'text' : 'password'}
+                            value={password}
+                            onChange={handleInputChange}
+                            name='password'
+                        />
+                        <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <AiOutlineEyeInvisible className="text-lg" /> : <AiOutlineEye className="text-lg" />}
+                        </button>
+                    </div>
                     {!validValues.password && password && <p className="text-red-500 text-xs mt-1"><AiFillAlert className="inline align-baseline" /><span>La contraseña debe tener al menos una mayúscula, una minúscula, un número y debe tener al menos 6 caracteres</span></p>}
                 </div>
                 <div className="w-3/4 md:w-1/2 mx-auto">
-                    <label className="block text-left text-gray-500 text-sm font-bold mb-2">Avatar</label>
+                    <label className="block text-left text-gray-500 text-sm font-bold mb-2">Avatar<span className="text-gray-400">(opcional)</span></label>
                     <input className="pr-2 w-full border border-slate-400 rounded-lg text-sm focus:z-10 focus:border-none focus:ring-verde-claro focus:outline-verde-claro file:bg-azul-claro file:font-semibold file:text-white file:border-0 file:mr-2 file:px-4 file:py-3 cursor-pointer" type='file' id='avatar' onChange={handleFileUpload} />
                 </div>
             </div>
@@ -98,7 +109,7 @@ const SingupForm = () => {
                     errors.length > 0 && errors.map(elm => <AlertErrors key={elm.index} message={elm}></AlertErrors>)
                 }
             </div>
-            <button className="bg-verde-oscuro w-auto min-w-[7rem] rounded-full mx-auto py-2 px-5 text-white font-bold hover:bg-verde-claro active:bg-verde-claro" type='submit' disabled={loadingImage}>{loadingImage ? '...Cargando imagen' : 'Enviar'}</button>
+            <button className="bg-verde-oscuro w-auto min-w-[7rem] rounded-full mx-auto py-2 px-5 text-white font-bold hover:bg-verde-claro active:bg-verde-claro" type='submit' disabled={loadingImage || !validValues.username || !validValues.email || !validValues.password}>{loadingImage ? '...Cargando imagen' : 'Enviar'}</button>
         </form>
     )
 }
