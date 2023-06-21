@@ -24,6 +24,10 @@ const PieGraphicPeriod = ({ data }) => {
             arcLinkLabelsSkipAngle={10}
             arcLinkLabelsTextColor="#333333"
             arcLinkLabelsThickness={2}
+            //modificación
+            arcLinkLabelsStraightLength={5}
+            arcLinkLabelsTextOffset={3}
+            //
             arcLinkLabelsColor={{ from: 'color' }}
             arcLabelsSkipAngle={10}
             arcLabelsTextColor={{

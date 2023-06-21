@@ -86,10 +86,12 @@ const EditPerfilForm = () => {
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Correo</label>
                     <input className="rounded-lg w-full border-slate-400 bg-slate-200 cursor-not-allowed" type='email' disabled value={user.email} id='email' name='email' />
                 </div>
-                <div className="w-3/4 md:w-1/2 mx-auto group relative">
+                <div className="w-3/4 md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Límite de gasto mensual</label>
-                    <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" type='number' min='0' onChange={handleInputChange} value={limit} id='limit' name='limit' />
-                    <p className="rounded-lg  px-4 py-2 text-white text-xs font-semibold hidden group-hover:block group-hover:absolute group-hover:-top-7 group-hover:bg-verde-oscuro transition duration-300">Opcionalmente puedes asignar un límite de gasto mensual</p>
+                    <div className='group relative'>
+                        <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" type='number' min='0' onChange={handleInputChange} value={limit} id='limit' name='limit' />
+                        <p className="rounded-lg px-4 text-center text-white text-xs font-semibold hidden group-hover:flex group-hover:items-center group-hover:absolute group-hover:justify-center group-hover:h-11 group-hover:-top-11 group-hover:right-0 group-hover:left-0 group-hover:bg-verde-oscuro transition duration-300">Opcionalmente puedes asignar un límite de gasto mensual</p>
+                    </div>
                 </div>
                 <div className="w-3/4 md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Avatar</label>

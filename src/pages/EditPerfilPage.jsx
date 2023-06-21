@@ -10,8 +10,8 @@ const EditPerfilPage = () => {
 
     return (
         <div className="max-w-7xl px-4 mx-auto">
-            <div className="h-screen flex flex-col justify-center items-center">
-                <div className="rounded-lg shadow-lg w-full py-8 mt-14 md:w-1/2">
+            <div className="flex flex-col items-center pt-28 pb-5">
+                <div className="rounded-lg shadow-lg w-full py-8 md:w-1/2">
                     <img src={user.avatar} alt="" className='w-20 aspect-square object-cover rounded-full shadow-inner mx-auto -mt-16' />
                     <h2 className="text-center text-azul-oscuro uppercase font-bold py-4">Editar Perfil</h2>
                     <EditPerfilForm />
