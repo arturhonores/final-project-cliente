@@ -52,7 +52,9 @@ const LoginForm = () => {
             })
             .catch(err => {
                 setErrors(err.response.data.message)
-                console.log(err.response.data.message)
+            })
+            .finally(() => {
+                setIsLoading(false)
             })
     }
 

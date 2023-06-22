@@ -4,6 +4,7 @@ import authService from '../services/auth.services.js'
 import uploadServices from "../services/upload.services.js"
 import AlertErrors from "./AlertErrors.jsx"
 import { AiFillAlert, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import Loader from "./Loader"
 
 const SingupForm = () => {
 
@@ -18,6 +19,7 @@ const SingupForm = () => {
     const [loadingImage, setLoadingImage] = useState(false)
     const [errors, setErrors] = useState([])
     const [showPassword, setShowPassword] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate()
 
@@ -59,11 +61,18 @@ const SingupForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        setIsLoading(true)
 
         authService
             .signup(signupData)
-            .then(({ data }) => navigate('/iniciar-sesion'))
+            .then(({ data }) => {
+                navigate('/iniciar-sesion')
+                setIsLoading(false)
+            })
             .catch(err => setErrors(err.response.data.errorMessages))
+            .finally(() => {
+                setIsLoading(false)
+            })
     }
 
     const { username, password, email } = signupData
@@ -109,7 +118,13 @@ const SingupForm = () => {
                     errors.length > 0 && errors.map(elm => <AlertErrors key={elm.index} message={elm}></AlertErrors>)
                 }
             </div>
-            <button className="bg-verde-oscuro w-auto min-w-[7rem] rounded-full mx-auto py-2 px-5 text-white font-bold hover:bg-verde-claro active:bg-verde-claro" type='submit' disabled={loadingImage || !validValues.username || !validValues.email || !validValues.password}>{loadingImage ? '...Cargando imagen' : 'Enviar'}</button>
+            {
+                isLoading
+                    ?
+                    <div className="mx-auto"><Loader></Loader></div>
+                    :
+                    <button className="bg-verde-oscuro w-auto min-w-[7rem] rounded-full mx-auto py-2 px-5 text-white font-bold hover:bg-verde-claro active:bg-verde-claro" type='submit' disabled={loadingImage || !validValues.username || !validValues.email || !validValues.password}>{loadingImage ? '...Cargando imagen' : 'Enviar'}</button>
+            }
         </form>
     )
 }
