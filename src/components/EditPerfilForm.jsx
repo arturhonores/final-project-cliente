@@ -36,21 +36,19 @@ const EditPerfilForm = () => {
 
     const handleInputChange = e => {
         const { value, name } = e.target
-        //lógica para asegurar limit = 0
-        let newValue = value;
-
-        if (name === "limit" && (value === "" || value === null)) {
-            newValue = "0";
-        }
-        setUserEdit({ ...userEdit, [name]: newValue })
+        setUserEdit({ ...userEdit, [name]: value })
     }
 
     const handleSubmit = e => {
         e.preventDefault()
+        let finalUserEdit = { ...userEdit };
+        if (finalUserEdit.limit === "" || finalUserEdit.limit === null) {
+            finalUserEdit.limit = "0";
+        }
         usersService
-            .userEdit(user._id, userEdit)
+            .userEdit(user._id, finalUserEdit)
             .then((response) => {
-                setUser(userEdit)  // actualizar los datos del usuario en el contexto
+                setUser(finalUserEdit)  // actualizar los datos del usuario en el contexto
                 navigate("/gastos")
             })
             .catch(err => console.log(err))
