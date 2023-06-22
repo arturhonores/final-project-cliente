@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../contexts/auth.context"
 import AlertErrors from "./AlertErrors.jsx"
 import { AiFillAlert, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import Loader from "./Loader"
 
 const LoginForm = () => {
 
@@ -15,6 +16,7 @@ const LoginForm = () => {
     const [validValues, setValidValues] = useState({ email: null, password: null });
     const [errors, setErrors] = useState([])
     const [showPassword, setShowPassword] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate()
 
@@ -39,13 +41,14 @@ const LoginForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-
+        setIsLoading(true)
         authService
             .login(loginData)
             .then(({ data }) => {
                 storeToken(data.authToken)
                 authenticateUser()
                 navigate('/gastos')
+                setIsLoading(false)
             })
             .catch(err => {
                 setErrors(err.response.data.message)
@@ -80,7 +83,12 @@ const LoginForm = () => {
                     }
                 </div>
             </div>
-            <button className="bg-verde-oscuro w-auto min-w-[7rem] rounded-full mx-auto py-2 px-5 text-white hover:bg-verde-claro font-bold" type='submit'>Enviar</button>
+            {
+                isLoading
+                    ? <div className="mx-auto"><Loader></Loader></div>
+                    : <button className="bg-verde-oscuro w-auto min-w-[7rem] rounded-full mx-auto py-2 px-5 text-white hover:bg-verde-claro font-bold" type='submit'>Enviar</button>
+
+            }
         </form>
     )
 }

@@ -6,6 +6,7 @@ import { MdOutlineHealthAndSafety, MdOutlineFoodBank } from 'react-icons/md'
 import { GrGamepad } from 'react-icons/gr'
 import { Link } from "react-router-dom"
 import { HiOutlineArrowLongRight } from "react-icons/hi2"
+import Loader from "./Loader"
 
 const ExpensesListPeriod = ({ expenses }) => {
     // Define las fechas de inicio y fin por defecto
@@ -79,7 +80,7 @@ const ExpensesListPeriod = ({ expenses }) => {
                             </Link>
                         ))
                         :
-                        <p className='text-center'>...cargando</p>
+                        <div className='text-center'><Loader></Loader></div>
                 }
                 <div className='rounded-lg shadow-sm mt-5 px-4 flex justify-between items-center w-full text-verde-oscuro font-bold'><span>TOTAL</span><span>€ {totalExpenses.toFixed(2)}</span></div>
             </div>

@@ -3,6 +3,7 @@ import ExpensesForm from "../components/ExpensesForm"
 import { AuthContext } from "../contexts/auth.context"
 import expensesService from "../services/expense.services"
 import TabsCategoryExpenses from '../components/TabsCategoryExpenses'
+import Loader from "../components/Loader"
 
 const ExpensesPage = () => {
 
@@ -33,7 +34,7 @@ const ExpensesPage = () => {
             <div className="flex flex-col justify-center items-center w-full md:w-1/2">
                 {!expenses
                     ?
-                    <p>...cargando</p>
+                    <Loader></Loader>
                     :
                     <TabsCategoryExpenses expenses={expenses}></TabsCategoryExpenses>
                 }

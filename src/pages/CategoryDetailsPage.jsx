@@ -8,6 +8,7 @@ import { AiOutlineEuro, AiOutlineShoppingCart } from 'react-icons/ai'
 import { GiClothes } from 'react-icons/gi'
 import { MdOutlineHealthAndSafety, MdOutlineFoodBank } from 'react-icons/md'
 import { GrGamepad } from 'react-icons/gr'
+import Loader from "../components/Loader"
 
 const CategoryDetailsPage = () => {
 
@@ -94,7 +95,9 @@ const CategoryDetailsPage = () => {
                 {/* TODO: DESACOPLAR EN COMPONENTE CATEGORYLIST */}
                 <div className="max-h-96 overflow-y-auto">
                     {!categoryList ? (
-                        <p>...cargando</p>
+                        <div className="flex justify-center h-9 overflow-y-hidden">
+                            <Loader widthClass="w-9" heightClass="h-9" ></Loader>
+                        </div>
                     ) : (
                         Object.entries(groupByDate(categoryList)).map(([date, expenses]) => (
                             <div key={date}>
