@@ -8,6 +8,7 @@ import CategoryDetailsPage from '../pages/CategoryDetailsPage'
 import EditExpense from '../pages/EditExpense'
 import GraphicsPage from '../pages/GraphicsPage'
 import EditPerfilPage from '../pages/EditPerfilPage'
+import Page404 from '../pages/Page404'
 
 const AppRoutes = () => {
     return (
@@ -22,7 +23,7 @@ const AppRoutes = () => {
                 <Route path='/graficos' element={<GraphicsPage />}></Route>
                 <Route path='/editar-perfil' element={<EditPerfilPage />}></Route>
             </Route>
-            {/* <Route path='*' element={<NotFoundPage />} /> */}
+            <Route path='*' element={<Page404 />} />
         </Routes>
     )
 }
