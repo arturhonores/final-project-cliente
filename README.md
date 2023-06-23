@@ -1,4 +1,4 @@
-# MONEY MINDER
+# CASH MINDER
 
 Es una aplicación web para controlar tus gastos personales.
 
