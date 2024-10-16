@@ -17,11 +17,11 @@
 .loader::before,
 .loader::after {
     content: "";
-    box-sizing: border-box;
     position: absolute;
-    inset: 0px;
+    box-sizing: border-box;
     border-radius: 50%;
     border: 5px solid #00FFAB;
+    inset: 0;
     animation: prixClipFix 2s linear infinite;
 }
 

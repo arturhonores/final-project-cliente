@@ -66,13 +66,13 @@ const LoginForm = () => {
             <div className="flex flex-col gap-y-4 gap-x-4">
                 <div className="w-full md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Correo</label>
-                    <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" id='email' type='email' value={email} onChange={handleInputChange} name='email' />
+                    <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" placeholder='invitado@invitado.es' id='email' type='email' value={email} onChange={handleInputChange} name='email' />
                     {!validValues.email && email && <p className="text-red-500 text-xs mt-1"><AiFillAlert className="inline align-baseline" /><span>Ingresa un correo electrónico válido</span></p>}
                 </div>
                 <div className="w-full md:w-1/2 mx-auto">
                     <label className="block text-left text-gray-500 text-sm font-bold mb-2">Contraseña</label>
                     <div className="relative">
-                        <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" type={showPassword ? 'text' : 'password'} id='password' value={password} onChange={handleInputChange} name='password' />
+                        <input className="rounded-lg w-full border-slate-400 focus:border-none focus:ring-verde-claro focus:outline-none" type={showPassword ? 'text' : 'password'} id='password' value={password} onChange={handleInputChange} name='password' placeholder='Invitado1234' />
                         <button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out" onClick={() => setShowPassword(!showPassword)}>
                             {showPassword ? <AiOutlineEyeInvisible className="text-lg" /> : <AiOutlineEye className="text-lg" />}
                         </button>
